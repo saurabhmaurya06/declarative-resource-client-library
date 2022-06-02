@@ -895,10 +895,8 @@ class ClusterControlPlaneRootVolumeVolumeTypeEnum(object):
     def to_proto(self, resource):
         if not resource:
             return resource
-        return (
-            cluster_pb2.ContainerawsClusterControlPlaneRootVolumeVolumeTypeEnum.Value(
-                "ContainerawsClusterControlPlaneRootVolumeVolumeTypeEnum%s" % resource
-            )
+        return cluster_pb2.ContainerawsClusterControlPlaneRootVolumeVolumeTypeEnum.Value(
+            "ContainerawsClusterControlPlaneRootVolumeVolumeTypeEnum%s" % resource
         )
 
     @classmethod
@@ -915,10 +913,8 @@ class ClusterControlPlaneMainVolumeVolumeTypeEnum(object):
     def to_proto(self, resource):
         if not resource:
             return resource
-        return (
-            cluster_pb2.ContainerawsClusterControlPlaneMainVolumeVolumeTypeEnum.Value(
-                "ContainerawsClusterControlPlaneMainVolumeVolumeTypeEnum%s" % resource
-            )
+        return cluster_pb2.ContainerawsClusterControlPlaneMainVolumeVolumeTypeEnum.Value(
+            "ContainerawsClusterControlPlaneMainVolumeVolumeTypeEnum%s" % resource
         )
 
     @classmethod

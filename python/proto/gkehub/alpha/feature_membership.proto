@@ -40,7 +40,6 @@ message GkehubAlphaFeatureMembershipConfigmanagement {
 message GkehubAlphaFeatureMembershipConfigmanagementConfigSync {
   GkehubAlphaFeatureMembershipConfigmanagementConfigSyncGit git = 1;
   string source_format = 2;
-  bool prevent_drift = 3;
 }
 
 message GkehubAlphaFeatureMembershipConfigmanagementConfigSyncGit {

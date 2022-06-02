@@ -128,7 +128,7 @@ components:
                                 to return. See [Advanced Logs Queries](https://cloud.google.com/logging/docs/view/advanced-queries).
                                 Only log entries that match the filter are returned.
                                 An empty filter matches all log entries.
-                            resourceNames:
+                            resourcenames:
                               type: array
                               x-dcl-go-name: ResourceNames
                               description: The names of logging resources to collect
@@ -139,9 +139,6 @@ components:
                               items:
                                 type: string
                                 x-dcl-go-type: string
-                                x-dcl-references:
-                                - resource: Cloudresourcemanager/Project
-                                  field: name
                         scorecard:
                           type: object
                           x-dcl-go-name: Scorecard
@@ -2408,7 +2405,7 @@ components:
                           See [Advanced Logs Queries](https://cloud.google.com/logging/docs/view/advanced-queries).
                           Only log entries that match the filter are returned. An
                           empty filter matches all log entries.
-                      resourceNames:
+                      resourcenames:
                         type: array
                         x-dcl-go-name: ResourceNames
                         description: The names of logging resources to collect logs
@@ -2419,9 +2416,6 @@ components:
                         items:
                           type: string
                           x-dcl-go-type: string
-                          x-dcl-references:
-                          - resource: Cloudresourcemanager/Project
-                            field: name
                   scorecard:
                     type: object
                     x-dcl-go-name: Scorecard
@@ -4531,7 +4525,7 @@ components:
                               return. See [Advanced Logs Queries](https://cloud.google.com/logging/docs/view/advanced-queries).
                               Only log entries that match the filter are returned.
                               An empty filter matches all log entries.
-                          resourceNames:
+                          resourcenames:
                             type: array
                             x-dcl-go-name: ResourceNames
                             description: The names of logging resources to collect
@@ -4542,9 +4536,6 @@ components:
                             items:
                               type: string
                               x-dcl-go-type: string
-                              x-dcl-references:
-                              - resource: Cloudresourcemanager/Project
-                                field: name
                       scorecard:
                         type: object
                         x-dcl-go-name: Scorecard
@@ -6777,7 +6768,7 @@ components:
                                 to return. See [Advanced Logs Queries](https://cloud.google.com/logging/docs/view/advanced-queries).
                                 Only log entries that match the filter are returned.
                                 An empty filter matches all log entries.
-                            resourceNames:
+                            resourcenames:
                               type: array
                               x-dcl-go-name: ResourceNames
                               description: The names of logging resources to collect
@@ -6788,9 +6779,6 @@ components:
                               items:
                                 type: string
                                 x-dcl-go-type: string
-                                x-dcl-references:
-                                - resource: Cloudresourcemanager/Project
-                                  field: name
                         scorecard:
                           type: object
                           x-dcl-go-name: Scorecard

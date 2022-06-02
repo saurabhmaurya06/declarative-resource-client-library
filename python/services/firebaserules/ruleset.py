@@ -198,9 +198,7 @@ class RulesetMetadata(object):
         if not resource:
             return None
 
-        return RulesetMetadata(
-            services=Primitive.from_proto(resource.services),
-        )
+        return RulesetMetadata(services=Primitive.from_proto(resource.services),)
 
 
 class RulesetMetadataArray(object):

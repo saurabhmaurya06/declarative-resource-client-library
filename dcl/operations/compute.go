@@ -69,12 +69,10 @@ type ComputeOperationErrorError struct {
 
 // Wait waits for an ComputeOperation to complete by fetching the operation until it completes.
 func (op *ComputeOperation) Wait(ctx context.Context, c *dcl.Config, _, _ string) error {
-	c.Logger.Infof("Waiting on operation: %v", op)
+	c.Logger.Infof("Waiting on: %v", op)
 	op.config = c
 
-	err := dcl.Do(ctx, op.operate, c.RetryProvider)
-	c.Logger.Infof("Completed operation: %v", op)
-	return err
+	return dcl.Do(ctx, op.operate, c.RetryProvider)
 }
 
 func (op *ComputeOperation) handleResponse(resp *dcl.RetryDetails, err error) (*dcl.RetryDetails, error) {

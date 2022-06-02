@@ -1180,10 +1180,8 @@ class JobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField
         if not resource:
             return None
 
-        return (
-            JobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFields(
-                name=Primitive.from_proto(resource.name),
-            )
+        return JobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFields(
+            name=Primitive.from_proto(resource.name),
         )
 
 
@@ -1367,10 +1365,8 @@ class JobTriggerInspectJobInspectConfig(object):
         if JobTriggerInspectJobInspectConfigMinLikelihoodEnum.to_proto(
             resource.min_likelihood
         ):
-            res.min_likelihood = (
-                JobTriggerInspectJobInspectConfigMinLikelihoodEnum.to_proto(
-                    resource.min_likelihood
-                )
+            res.min_likelihood = JobTriggerInspectJobInspectConfigMinLikelihoodEnum.to_proto(
+                resource.min_likelihood
             )
         if JobTriggerInspectJobInspectConfigLimits.to_proto(resource.limits):
             res.limits.CopyFrom(
@@ -1691,10 +1687,8 @@ class JobTriggerInspectJobInspectConfigCustomInfoTypes(object):
         if JobTriggerInspectJobInspectConfigCustomInfoTypesLikelihoodEnum.to_proto(
             resource.likelihood
         ):
-            res.likelihood = (
-                JobTriggerInspectJobInspectConfigCustomInfoTypesLikelihoodEnum.to_proto(
-                    resource.likelihood
-                )
+            res.likelihood = JobTriggerInspectJobInspectConfigCustomInfoTypesLikelihoodEnum.to_proto(
+                resource.likelihood
             )
         if JobTriggerInspectJobInspectConfigCustomInfoTypesDictionary.to_proto(
             resource.dictionary
@@ -1990,10 +1984,8 @@ class JobTriggerInspectJobInspectConfigCustomInfoTypesDictionaryCloudStoragePath
         if not resource:
             return None
 
-        return (
-            JobTriggerInspectJobInspectConfigCustomInfoTypesDictionaryCloudStoragePath(
-                path=Primitive.from_proto(resource.path),
-            )
+        return JobTriggerInspectJobInspectConfigCustomInfoTypesDictionaryCloudStoragePath(
+            path=Primitive.from_proto(resource.path),
         )
 
 

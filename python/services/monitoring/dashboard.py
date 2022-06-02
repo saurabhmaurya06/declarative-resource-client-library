@@ -425,10 +425,8 @@ class DashboardGridLayoutWidgetsXyChartDataSets(object):
         if DashboardGridLayoutWidgetsXyChartDataSetsPlotTypeEnum.to_proto(
             resource.plot_type
         ):
-            res.plot_type = (
-                DashboardGridLayoutWidgetsXyChartDataSetsPlotTypeEnum.to_proto(
-                    resource.plot_type
-                )
+            res.plot_type = DashboardGridLayoutWidgetsXyChartDataSetsPlotTypeEnum.to_proto(
+                resource.plot_type
             )
         if Primitive.to_proto(resource.legend_template):
             res.legend_template = Primitive.to_proto(resource.legend_template)
@@ -1491,10 +1489,8 @@ class DashboardGridLayoutWidgetsXyChartThresholds(object):
         if DashboardGridLayoutWidgetsXyChartThresholdsDirectionEnum.to_proto(
             resource.direction
         ):
-            res.direction = (
-                DashboardGridLayoutWidgetsXyChartThresholdsDirectionEnum.to_proto(
-                    resource.direction
-                )
+            res.direction = DashboardGridLayoutWidgetsXyChartThresholdsDirectionEnum.to_proto(
+                resource.direction
             )
         return res
 
@@ -2873,10 +2869,8 @@ class DashboardGridLayoutWidgetsScorecardThresholds(object):
         if DashboardGridLayoutWidgetsScorecardThresholdsDirectionEnum.to_proto(
             resource.direction
         ):
-            res.direction = (
-                DashboardGridLayoutWidgetsScorecardThresholdsDirectionEnum.to_proto(
-                    resource.direction
-                )
+            res.direction = DashboardGridLayoutWidgetsScorecardThresholdsDirectionEnum.to_proto(
+                resource.direction
             )
         return res
 
@@ -2986,9 +2980,9 @@ class DashboardGridLayoutWidgetsBlankArray(object):
 
 
 class DashboardGridLayoutWidgetsLogsPanel(object):
-    def __init__(self, filter: str = None, resource_names: list = None):
+    def __init__(self, filter: str = None, resourceNames: list = None):
         self.filter = filter
-        self.resource_names = resource_names
+        self.resourceNames = resourceNames
 
     @classmethod
     def to_proto(self, resource):
@@ -2998,8 +2992,8 @@ class DashboardGridLayoutWidgetsLogsPanel(object):
         res = dashboard_pb2.MonitoringDashboardGridLayoutWidgetsLogsPanel()
         if Primitive.to_proto(resource.filter):
             res.filter = Primitive.to_proto(resource.filter)
-        if Primitive.to_proto(resource.resource_names):
-            res.resource_names.extend(Primitive.to_proto(resource.resource_names))
+        if Primitive.to_proto(resource.resourceNames):
+            res.resourceNames.extend(Primitive.to_proto(resource.resourceNames))
         return res
 
     @classmethod
@@ -3009,7 +3003,7 @@ class DashboardGridLayoutWidgetsLogsPanel(object):
 
         return DashboardGridLayoutWidgetsLogsPanel(
             filter=Primitive.from_proto(resource.filter),
-            resource_names=Primitive.from_proto(resource.resource_names),
+            resourceNames=Primitive.from_proto(resource.resourceNames),
         )
 
 
@@ -3354,10 +3348,8 @@ class DashboardMosaicLayoutTilesWidgetXyChartDataSets(object):
         if DashboardMosaicLayoutTilesWidgetXyChartDataSetsPlotTypeEnum.to_proto(
             resource.plot_type
         ):
-            res.plot_type = (
-                DashboardMosaicLayoutTilesWidgetXyChartDataSetsPlotTypeEnum.to_proto(
-                    resource.plot_type
-                )
+            res.plot_type = DashboardMosaicLayoutTilesWidgetXyChartDataSetsPlotTypeEnum.to_proto(
+                resource.plot_type
             )
         if Primitive.to_proto(resource.legend_template):
             res.legend_template = Primitive.to_proto(resource.legend_template)
@@ -4420,18 +4412,14 @@ class DashboardMosaicLayoutTilesWidgetXyChartThresholds(object):
         if DashboardMosaicLayoutTilesWidgetXyChartThresholdsColorEnum.to_proto(
             resource.color
         ):
-            res.color = (
-                DashboardMosaicLayoutTilesWidgetXyChartThresholdsColorEnum.to_proto(
-                    resource.color
-                )
+            res.color = DashboardMosaicLayoutTilesWidgetXyChartThresholdsColorEnum.to_proto(
+                resource.color
             )
         if DashboardMosaicLayoutTilesWidgetXyChartThresholdsDirectionEnum.to_proto(
             resource.direction
         ):
-            res.direction = (
-                DashboardMosaicLayoutTilesWidgetXyChartThresholdsDirectionEnum.to_proto(
-                    resource.direction
-                )
+            res.direction = DashboardMosaicLayoutTilesWidgetXyChartThresholdsDirectionEnum.to_proto(
+                resource.direction
             )
         return res
 
@@ -4587,10 +4575,8 @@ class DashboardMosaicLayoutTilesWidgetXyChartChartOptions(object):
         if DashboardMosaicLayoutTilesWidgetXyChartChartOptionsModeEnum.to_proto(
             resource.mode
         ):
-            res.mode = (
-                DashboardMosaicLayoutTilesWidgetXyChartChartOptionsModeEnum.to_proto(
-                    resource.mode
-                )
+            res.mode = DashboardMosaicLayoutTilesWidgetXyChartChartOptionsModeEnum.to_proto(
+                resource.mode
             )
         return res
 
@@ -5840,10 +5826,8 @@ class DashboardMosaicLayoutTilesWidgetScorecardThresholds(object):
         if DashboardMosaicLayoutTilesWidgetScorecardThresholdsColorEnum.to_proto(
             resource.color
         ):
-            res.color = (
-                DashboardMosaicLayoutTilesWidgetScorecardThresholdsColorEnum.to_proto(
-                    resource.color
-                )
+            res.color = DashboardMosaicLayoutTilesWidgetScorecardThresholdsColorEnum.to_proto(
+                resource.color
             )
         if DashboardMosaicLayoutTilesWidgetScorecardThresholdsDirectionEnum.to_proto(
             resource.direction
@@ -5962,9 +5946,9 @@ class DashboardMosaicLayoutTilesWidgetBlankArray(object):
 
 
 class DashboardMosaicLayoutTilesWidgetLogsPanel(object):
-    def __init__(self, filter: str = None, resource_names: list = None):
+    def __init__(self, filter: str = None, resourceNames: list = None):
         self.filter = filter
-        self.resource_names = resource_names
+        self.resourceNames = resourceNames
 
     @classmethod
     def to_proto(self, resource):
@@ -5974,8 +5958,8 @@ class DashboardMosaicLayoutTilesWidgetLogsPanel(object):
         res = dashboard_pb2.MonitoringDashboardMosaicLayoutTilesWidgetLogsPanel()
         if Primitive.to_proto(resource.filter):
             res.filter = Primitive.to_proto(resource.filter)
-        if Primitive.to_proto(resource.resource_names):
-            res.resource_names.extend(Primitive.to_proto(resource.resource_names))
+        if Primitive.to_proto(resource.resourceNames):
+            res.resourceNames.extend(Primitive.to_proto(resource.resourceNames))
         return res
 
     @classmethod
@@ -5985,7 +5969,7 @@ class DashboardMosaicLayoutTilesWidgetLogsPanel(object):
 
         return DashboardMosaicLayoutTilesWidgetLogsPanel(
             filter=Primitive.from_proto(resource.filter),
-            resource_names=Primitive.from_proto(resource.resource_names),
+            resourceNames=Primitive.from_proto(resource.resourceNames),
         )
 
 
@@ -6303,10 +6287,8 @@ class DashboardRowLayoutRowsWidgetsXyChartDataSets(object):
         if DashboardRowLayoutRowsWidgetsXyChartDataSetsPlotTypeEnum.to_proto(
             resource.plot_type
         ):
-            res.plot_type = (
-                DashboardRowLayoutRowsWidgetsXyChartDataSetsPlotTypeEnum.to_proto(
-                    resource.plot_type
-                )
+            res.plot_type = DashboardRowLayoutRowsWidgetsXyChartDataSetsPlotTypeEnum.to_proto(
+                resource.plot_type
             )
         if Primitive.to_proto(resource.legend_template):
             res.legend_template = Primitive.to_proto(resource.legend_template)
@@ -7366,18 +7348,14 @@ class DashboardRowLayoutRowsWidgetsXyChartThresholds(object):
         if DashboardRowLayoutRowsWidgetsXyChartThresholdsColorEnum.to_proto(
             resource.color
         ):
-            res.color = (
-                DashboardRowLayoutRowsWidgetsXyChartThresholdsColorEnum.to_proto(
-                    resource.color
-                )
+            res.color = DashboardRowLayoutRowsWidgetsXyChartThresholdsColorEnum.to_proto(
+                resource.color
             )
         if DashboardRowLayoutRowsWidgetsXyChartThresholdsDirectionEnum.to_proto(
             resource.direction
         ):
-            res.direction = (
-                DashboardRowLayoutRowsWidgetsXyChartThresholdsDirectionEnum.to_proto(
-                    resource.direction
-                )
+            res.direction = DashboardRowLayoutRowsWidgetsXyChartThresholdsDirectionEnum.to_proto(
+                resource.direction
             )
         return res
 
@@ -7525,10 +7503,8 @@ class DashboardRowLayoutRowsWidgetsXyChartChartOptions(object):
         if DashboardRowLayoutRowsWidgetsXyChartChartOptionsModeEnum.to_proto(
             resource.mode
         ):
-            res.mode = (
-                DashboardRowLayoutRowsWidgetsXyChartChartOptionsModeEnum.to_proto(
-                    resource.mode
-                )
+            res.mode = DashboardRowLayoutRowsWidgetsXyChartChartOptionsModeEnum.to_proto(
+                resource.mode
             )
         return res
 
@@ -8770,18 +8746,14 @@ class DashboardRowLayoutRowsWidgetsScorecardThresholds(object):
         if DashboardRowLayoutRowsWidgetsScorecardThresholdsColorEnum.to_proto(
             resource.color
         ):
-            res.color = (
-                DashboardRowLayoutRowsWidgetsScorecardThresholdsColorEnum.to_proto(
-                    resource.color
-                )
+            res.color = DashboardRowLayoutRowsWidgetsScorecardThresholdsColorEnum.to_proto(
+                resource.color
             )
         if DashboardRowLayoutRowsWidgetsScorecardThresholdsDirectionEnum.to_proto(
             resource.direction
         ):
-            res.direction = (
-                DashboardRowLayoutRowsWidgetsScorecardThresholdsDirectionEnum.to_proto(
-                    resource.direction
-                )
+            res.direction = DashboardRowLayoutRowsWidgetsScorecardThresholdsDirectionEnum.to_proto(
+                resource.direction
             )
         return res
 
@@ -8894,9 +8866,9 @@ class DashboardRowLayoutRowsWidgetsBlankArray(object):
 
 
 class DashboardRowLayoutRowsWidgetsLogsPanel(object):
-    def __init__(self, filter: str = None, resource_names: list = None):
+    def __init__(self, filter: str = None, resourceNames: list = None):
         self.filter = filter
-        self.resource_names = resource_names
+        self.resourceNames = resourceNames
 
     @classmethod
     def to_proto(self, resource):
@@ -8906,8 +8878,8 @@ class DashboardRowLayoutRowsWidgetsLogsPanel(object):
         res = dashboard_pb2.MonitoringDashboardRowLayoutRowsWidgetsLogsPanel()
         if Primitive.to_proto(resource.filter):
             res.filter = Primitive.to_proto(resource.filter)
-        if Primitive.to_proto(resource.resource_names):
-            res.resource_names.extend(Primitive.to_proto(resource.resource_names))
+        if Primitive.to_proto(resource.resourceNames):
+            res.resourceNames.extend(Primitive.to_proto(resource.resourceNames))
         return res
 
     @classmethod
@@ -8917,7 +8889,7 @@ class DashboardRowLayoutRowsWidgetsLogsPanel(object):
 
         return DashboardRowLayoutRowsWidgetsLogsPanel(
             filter=Primitive.from_proto(resource.filter),
-            resource_names=Primitive.from_proto(resource.resource_names),
+            resourceNames=Primitive.from_proto(resource.resourceNames),
         )
 
 
@@ -9253,10 +9225,8 @@ class DashboardColumnLayoutColumnsWidgetsXyChartDataSets(object):
         if DashboardColumnLayoutColumnsWidgetsXyChartDataSetsPlotTypeEnum.to_proto(
             resource.plot_type
         ):
-            res.plot_type = (
-                DashboardColumnLayoutColumnsWidgetsXyChartDataSetsPlotTypeEnum.to_proto(
-                    resource.plot_type
-                )
+            res.plot_type = DashboardColumnLayoutColumnsWidgetsXyChartDataSetsPlotTypeEnum.to_proto(
+                resource.plot_type
             )
         if Primitive.to_proto(resource.legend_template):
             res.legend_template = Primitive.to_proto(resource.legend_template)
@@ -10323,10 +10293,8 @@ class DashboardColumnLayoutColumnsWidgetsXyChartThresholds(object):
         if DashboardColumnLayoutColumnsWidgetsXyChartThresholdsColorEnum.to_proto(
             resource.color
         ):
-            res.color = (
-                DashboardColumnLayoutColumnsWidgetsXyChartThresholdsColorEnum.to_proto(
-                    resource.color
-                )
+            res.color = DashboardColumnLayoutColumnsWidgetsXyChartThresholdsColorEnum.to_proto(
+                resource.color
             )
         if DashboardColumnLayoutColumnsWidgetsXyChartThresholdsDirectionEnum.to_proto(
             resource.direction
@@ -10387,10 +10355,8 @@ class DashboardColumnLayoutColumnsWidgetsXyChartXAxis(object):
         if DashboardColumnLayoutColumnsWidgetsXyChartXAxisScaleEnum.to_proto(
             resource.scale
         ):
-            res.scale = (
-                DashboardColumnLayoutColumnsWidgetsXyChartXAxisScaleEnum.to_proto(
-                    resource.scale
-                )
+            res.scale = DashboardColumnLayoutColumnsWidgetsXyChartXAxisScaleEnum.to_proto(
+                resource.scale
             )
         return res
 
@@ -10441,10 +10407,8 @@ class DashboardColumnLayoutColumnsWidgetsXyChartYAxis(object):
         if DashboardColumnLayoutColumnsWidgetsXyChartYAxisScaleEnum.to_proto(
             resource.scale
         ):
-            res.scale = (
-                DashboardColumnLayoutColumnsWidgetsXyChartYAxisScaleEnum.to_proto(
-                    resource.scale
-                )
+            res.scale = DashboardColumnLayoutColumnsWidgetsXyChartYAxisScaleEnum.to_proto(
+                resource.scale
             )
         return res
 
@@ -10494,10 +10458,8 @@ class DashboardColumnLayoutColumnsWidgetsXyChartChartOptions(object):
         if DashboardColumnLayoutColumnsWidgetsXyChartChartOptionsModeEnum.to_proto(
             resource.mode
         ):
-            res.mode = (
-                DashboardColumnLayoutColumnsWidgetsXyChartChartOptionsModeEnum.to_proto(
-                    resource.mode
-                )
+            res.mode = DashboardColumnLayoutColumnsWidgetsXyChartChartOptionsModeEnum.to_proto(
+                resource.mode
             )
         return res
 
@@ -11874,9 +11836,9 @@ class DashboardColumnLayoutColumnsWidgetsBlankArray(object):
 
 
 class DashboardColumnLayoutColumnsWidgetsLogsPanel(object):
-    def __init__(self, filter: str = None, resource_names: list = None):
+    def __init__(self, filter: str = None, resourceNames: list = None):
         self.filter = filter
-        self.resource_names = resource_names
+        self.resourceNames = resourceNames
 
     @classmethod
     def to_proto(self, resource):
@@ -11886,8 +11848,8 @@ class DashboardColumnLayoutColumnsWidgetsLogsPanel(object):
         res = dashboard_pb2.MonitoringDashboardColumnLayoutColumnsWidgetsLogsPanel()
         if Primitive.to_proto(resource.filter):
             res.filter = Primitive.to_proto(resource.filter)
-        if Primitive.to_proto(resource.resource_names):
-            res.resource_names.extend(Primitive.to_proto(resource.resource_names))
+        if Primitive.to_proto(resource.resourceNames):
+            res.resourceNames.extend(Primitive.to_proto(resource.resourceNames))
         return res
 
     @classmethod
@@ -11897,7 +11859,7 @@ class DashboardColumnLayoutColumnsWidgetsLogsPanel(object):
 
         return DashboardColumnLayoutColumnsWidgetsLogsPanel(
             filter=Primitive.from_proto(resource.filter),
-            resource_names=Primitive.from_proto(resource.resource_names),
+            resourceNames=Primitive.from_proto(resource.resourceNames),
         )
 
 
@@ -13743,11 +13705,11 @@ class DashboardMosaicLayoutTilesWidgetTextFormatEnum(object):
     def from_proto(self, resource):
         if not resource:
             return resource
-        return (
-            dashboard_pb2.MonitoringDashboardMosaicLayoutTilesWidgetTextFormatEnum.Name(
-                resource
-            )[len("MonitoringDashboardMosaicLayoutTilesWidgetTextFormatEnum") :]
-        )
+        return dashboard_pb2.MonitoringDashboardMosaicLayoutTilesWidgetTextFormatEnum.Name(
+            resource
+        )[
+            len("MonitoringDashboardMosaicLayoutTilesWidgetTextFormatEnum") :
+        ]
 
 
 class DashboardRowLayoutRowsWidgetsXyChartDataSetsTimeSeriesQueryTimeSeriesFilterAggregationPerSeriesAlignerEnum(
@@ -14648,10 +14610,8 @@ class DashboardRowLayoutRowsWidgetsTextFormatEnum(object):
     def to_proto(self, resource):
         if not resource:
             return resource
-        return (
-            dashboard_pb2.MonitoringDashboardRowLayoutRowsWidgetsTextFormatEnum.Value(
-                "MonitoringDashboardRowLayoutRowsWidgetsTextFormatEnum%s" % resource
-            )
+        return dashboard_pb2.MonitoringDashboardRowLayoutRowsWidgetsTextFormatEnum.Value(
+            "MonitoringDashboardRowLayoutRowsWidgetsTextFormatEnum%s" % resource
         )
 
     @classmethod

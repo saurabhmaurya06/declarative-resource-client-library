@@ -20,6 +20,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"strings"
+	"time"
 
 	"github.com/GoogleCloudPlatform/declarative-resource-client-library/dcl"
 	"github.com/GoogleCloudPlatform/declarative-resource-client-library/dcl/operations"
@@ -153,6 +154,11 @@ func newUpdateDeliveryPipelineUpdateDeliveryPipelineRequest(ctx context.Context,
 	res := f
 	_ = res
 
+	if v, err := dcl.DeriveField("projects/%s/locations/%s/deliveryPipelines/%s", f.Name, dcl.SelfLinkToName(f.Project), dcl.SelfLinkToName(f.Location), dcl.SelfLinkToName(f.Name)); err != nil {
+		return nil, fmt.Errorf("error expanding Name into name: %w", err)
+	} else if !dcl.IsEmptyValueIndirect(v) {
+		req["name"] = v
+	}
 	if v := f.Description; !dcl.IsEmptyValueIndirect(v) {
 		req["description"] = v
 	}
@@ -371,20 +377,20 @@ func (op *deleteDeliveryPipelineOperation) do(ctx context.Context, r *DeliveryPi
 		return err
 	}
 
-	// We saw a race condition where for some successful delete operation, the Get calls returned resources for a short duration.
-	// This is the reason we are adding retry to handle that case.
-	retriesRemaining := 10
-	dcl.Do(ctx, func(ctx context.Context) (*dcl.RetryDetails, error) {
-		_, err := c.GetDeliveryPipeline(ctx, r)
-		if dcl.IsNotFound(err) {
-			return nil, nil
+	// we saw a race condition where for some successful delete operation, the Get calls returned resources for a short duration.
+	// this is the reason we are adding retry to handle that case.
+	maxRetry := 10
+	for i := 1; i <= maxRetry; i++ {
+		_, err = c.GetDeliveryPipeline(ctx, r)
+		if !dcl.IsNotFound(err) {
+			if i == maxRetry {
+				return dcl.NotDeletedError{ExistingResource: r}
+			}
+			time.Sleep(1000 * time.Millisecond)
+		} else {
+			break
 		}
-		if retriesRemaining > 0 {
-			retriesRemaining--
-			return &dcl.RetryDetails{}, dcl.OperationNotDone{}
-		}
-		return nil, dcl.NotDeletedError{ExistingResource: r}
-	}, c.Config.RetryProvider)
+	}
 	return nil
 }
 
@@ -1251,7 +1257,7 @@ func diffDeliveryPipeline(c *Client, desired, actual *DeliveryPipeline, opts ...
 	var fn dcl.FieldName
 	var newDiffs []*dcl.FieldDiff
 	// New style diffs.
-	if ds, err := dcl.Diff(desired.Name, actual.Name, dcl.Info{OperationSelector: dcl.RequiresRecreate()}, fn.AddNest("Name")); len(ds) != 0 || err != nil {
+	if ds, err := dcl.Diff(desired.Name, actual.Name, dcl.Info{OperationSelector: dcl.TriggersOperation("updateDeliveryPipelineUpdateDeliveryPipelineOperation")}, fn.AddNest("Name")); len(ds) != 0 || err != nil {
 		if err != nil {
 			return nil, err
 		}

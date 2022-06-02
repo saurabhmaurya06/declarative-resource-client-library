@@ -30,9 +30,6 @@ class Group(object):
         create_time: str = None,
         update_time: str = None,
         labels: dict = None,
-        direct_member_count: int = None,
-        direct_member_count_per_type: dict = None,
-        derived_aliases: list = None,
         dynamic_group_metadata: dict = None,
         posix_groups: list = None,
         initial_group_config: str = None,
@@ -89,8 +86,8 @@ class Group(object):
                 GroupPosixGroupsArray.to_proto(self.posix_groups)
             )
         if GroupInitialGroupConfigEnum.to_proto(self.initial_group_config):
-            request.resource.initial_group_config = (
-                GroupInitialGroupConfigEnum.to_proto(self.initial_group_config)
+            request.resource.initial_group_config = GroupInitialGroupConfigEnum.to_proto(
+                self.initial_group_config
             )
 
         request.service_account_file = self.service_account_file
@@ -107,13 +104,6 @@ class Group(object):
         self.create_time = Primitive.from_proto(response.create_time)
         self.update_time = Primitive.from_proto(response.update_time)
         self.labels = Primitive.from_proto(response.labels)
-        self.direct_member_count = Primitive.from_proto(response.direct_member_count)
-        self.direct_member_count_per_type = GroupDirectMemberCountPerType.from_proto(
-            response.direct_member_count_per_type
-        )
-        self.derived_aliases = GroupDerivedAliasesArray.from_proto(
-            response.derived_aliases
-        )
         self.dynamic_group_metadata = GroupDynamicGroupMetadata.from_proto(
             response.dynamic_group_metadata
         )
@@ -160,8 +150,8 @@ class Group(object):
                 GroupPosixGroupsArray.to_proto(self.posix_groups)
             )
         if GroupInitialGroupConfigEnum.to_proto(self.initial_group_config):
-            request.resource.initial_group_config = (
-                GroupInitialGroupConfigEnum.to_proto(self.initial_group_config)
+            request.resource.initial_group_config = GroupInitialGroupConfigEnum.to_proto(
+                self.initial_group_config
             )
 
         response = stub.DeleteCloudidentityBetaGroup(request)
@@ -292,86 +282,6 @@ class GroupAdditionalGroupKeysArray(object):
         return [GroupAdditionalGroupKeys.from_proto(i) for i in resources]
 
 
-class GroupDirectMemberCountPerType(object):
-    def __init__(self, user_count: int = None, group_count: int = None):
-        self.user_count = user_count
-        self.group_count = group_count
-
-    @classmethod
-    def to_proto(self, resource):
-        if not resource:
-            return None
-
-        res = group_pb2.CloudidentityBetaGroupDirectMemberCountPerType()
-        if Primitive.to_proto(resource.user_count):
-            res.user_count = Primitive.to_proto(resource.user_count)
-        if Primitive.to_proto(resource.group_count):
-            res.group_count = Primitive.to_proto(resource.group_count)
-        return res
-
-    @classmethod
-    def from_proto(self, resource):
-        if not resource:
-            return None
-
-        return GroupDirectMemberCountPerType(
-            user_count=Primitive.from_proto(resource.user_count),
-            group_count=Primitive.from_proto(resource.group_count),
-        )
-
-
-class GroupDirectMemberCountPerTypeArray(object):
-    @classmethod
-    def to_proto(self, resources):
-        if not resources:
-            return resources
-        return [GroupDirectMemberCountPerType.to_proto(i) for i in resources]
-
-    @classmethod
-    def from_proto(self, resources):
-        return [GroupDirectMemberCountPerType.from_proto(i) for i in resources]
-
-
-class GroupDerivedAliases(object):
-    def __init__(self, id: str = None, namespace: str = None):
-        self.id = id
-        self.namespace = namespace
-
-    @classmethod
-    def to_proto(self, resource):
-        if not resource:
-            return None
-
-        res = group_pb2.CloudidentityBetaGroupDerivedAliases()
-        if Primitive.to_proto(resource.id):
-            res.id = Primitive.to_proto(resource.id)
-        if Primitive.to_proto(resource.namespace):
-            res.namespace = Primitive.to_proto(resource.namespace)
-        return res
-
-    @classmethod
-    def from_proto(self, resource):
-        if not resource:
-            return None
-
-        return GroupDerivedAliases(
-            id=Primitive.from_proto(resource.id),
-            namespace=Primitive.from_proto(resource.namespace),
-        )
-
-
-class GroupDerivedAliasesArray(object):
-    @classmethod
-    def to_proto(self, resources):
-        if not resources:
-            return resources
-        return [GroupDerivedAliases.to_proto(i) for i in resources]
-
-    @classmethod
-    def from_proto(self, resources):
-        return [GroupDerivedAliases.from_proto(i) for i in resources]
-
-
 class GroupDynamicGroupMetadata(object):
     def __init__(self, queries: list = None, status: dict = None):
         self.queries = queries
@@ -432,10 +342,8 @@ class GroupDynamicGroupMetadataQueries(object):
         if GroupDynamicGroupMetadataQueriesResourceTypeEnum.to_proto(
             resource.resource_type
         ):
-            res.resource_type = (
-                GroupDynamicGroupMetadataQueriesResourceTypeEnum.to_proto(
-                    resource.resource_type
-                )
+            res.resource_type = GroupDynamicGroupMetadataQueriesResourceTypeEnum.to_proto(
+                resource.resource_type
             )
         if Primitive.to_proto(resource.query):
             res.query = Primitive.to_proto(resource.query)
@@ -580,22 +488,19 @@ class GroupDynamicGroupMetadataStatusStatusEnum(object):
     def to_proto(self, resource):
         if not resource:
             return resource
-        return (
-            group_pb2.CloudidentityBetaGroupDynamicGroupMetadataStatusStatusEnum.Value(
-                "CloudidentityBetaGroupDynamicGroupMetadataStatusStatusEnum%s"
-                % resource
-            )
+        return group_pb2.CloudidentityBetaGroupDynamicGroupMetadataStatusStatusEnum.Value(
+            "CloudidentityBetaGroupDynamicGroupMetadataStatusStatusEnum%s" % resource
         )
 
     @classmethod
     def from_proto(self, resource):
         if not resource:
             return resource
-        return (
-            group_pb2.CloudidentityBetaGroupDynamicGroupMetadataStatusStatusEnum.Name(
-                resource
-            )[len("CloudidentityBetaGroupDynamicGroupMetadataStatusStatusEnum") :]
-        )
+        return group_pb2.CloudidentityBetaGroupDynamicGroupMetadataStatusStatusEnum.Name(
+            resource
+        )[
+            len("CloudidentityBetaGroupDynamicGroupMetadataStatusStatusEnum") :
+        ]
 
 
 class GroupInitialGroupConfigEnum(object):

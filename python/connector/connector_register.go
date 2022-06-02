@@ -130,12 +130,6 @@ import (
 
 	datafusion_beta_connector "github.com/GoogleCloudPlatform/declarative-resource-client-library/services/google/datafusion/beta_connector"
 
-	dataplex_connector "github.com/GoogleCloudPlatform/declarative-resource-client-library/services/google/dataplex/connector"
-
-	dataplex_beta_connector "github.com/GoogleCloudPlatform/declarative-resource-client-library/services/google/dataplex/beta_connector"
-
-	dataplex_alpha_connector "github.com/GoogleCloudPlatform/declarative-resource-client-library/services/google/dataplex/alpha_connector"
-
 	dataproc_connector "github.com/GoogleCloudPlatform/declarative-resource-client-library/services/google/dataproc/connector"
 
 	dataproc_beta_connector "github.com/GoogleCloudPlatform/declarative-resource-client-library/services/google/dataproc/beta_connector"
@@ -257,12 +251,6 @@ import (
 	privateca_beta_connector "github.com/GoogleCloudPlatform/declarative-resource-client-library/services/google/privateca/beta_connector"
 
 	privateca_alpha_connector "github.com/GoogleCloudPlatform/declarative-resource-client-library/services/google/privateca/alpha_connector"
-
-	vertexai_connector "github.com/GoogleCloudPlatform/declarative-resource-client-library/services/google/vertexai/connector"
-
-	vertexai_beta_connector "github.com/GoogleCloudPlatform/declarative-resource-client-library/services/google/vertexai/beta_connector"
-
-	vertexai_alpha_connector "github.com/GoogleCloudPlatform/declarative-resource-client-library/services/google/vertexai/alpha_connector"
 
 	vmware_alpha_connector "github.com/GoogleCloudPlatform/declarative-resource-client-library/services/google/vmware/alpha_connector"
 
@@ -401,12 +389,6 @@ func InitializeServer(grpcServer *grpc.Server) *connectorpb.InitializeResponse {
 
 	datafusion_beta_connector.RegisterServers(grpcServer)
 
-	dataplex_connector.RegisterServers(grpcServer)
-
-	dataplex_beta_connector.RegisterServers(grpcServer)
-
-	dataplex_alpha_connector.RegisterServers(grpcServer)
-
 	dataproc_connector.RegisterServers(grpcServer)
 
 	dataproc_beta_connector.RegisterServers(grpcServer)
@@ -528,12 +510,6 @@ func InitializeServer(grpcServer *grpc.Server) *connectorpb.InitializeResponse {
 	privateca_beta_connector.RegisterServers(grpcServer)
 
 	privateca_alpha_connector.RegisterServers(grpcServer)
-
-	vertexai_connector.RegisterServers(grpcServer)
-
-	vertexai_beta_connector.RegisterServers(grpcServer)
-
-	vertexai_alpha_connector.RegisterServers(grpcServer)
 
 	vmware_alpha_connector.RegisterServers(grpcServer)
 

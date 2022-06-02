@@ -37,14 +37,12 @@ type DNSOperation struct {
 
 // Wait waits for an DNSOperation to complete by fetching the operation until it completes.
 func (op *DNSOperation) Wait(ctx context.Context, c *dcl.Config, project, managedZone string) error {
-	c.Logger.Infof("Waiting on operation: %v", op)
+	c.Logger.Infof("Waiting on: %v", op)
 	op.config = c
 	op.ManagedZone = managedZone
 	op.Project = project
 
-	err := dcl.Do(ctx, op.operate, c.RetryProvider)
-	c.Logger.Infof("Completed operation: %v", op)
-	return err
+	return dcl.Do(ctx, op.operate, c.RetryProvider)
 }
 
 func (op *DNSOperation) operate(ctx context.Context) (*dcl.RetryDetails, error) {

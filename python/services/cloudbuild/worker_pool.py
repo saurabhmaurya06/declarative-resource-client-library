@@ -306,10 +306,8 @@ class WorkerPoolPrivatePoolV1ConfigNetworkConfig(object):
         if WorkerPoolPrivatePoolV1ConfigNetworkConfigEgressOptionEnum.to_proto(
             resource.egress_option
         ):
-            res.egress_option = (
-                WorkerPoolPrivatePoolV1ConfigNetworkConfigEgressOptionEnum.to_proto(
-                    resource.egress_option
-                )
+            res.egress_option = WorkerPoolPrivatePoolV1ConfigNetworkConfigEgressOptionEnum.to_proto(
+                resource.egress_option
             )
         return res
 

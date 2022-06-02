@@ -13,12 +13,9 @@
 # limitations under the License.
 info:
   title: Clouddeploy/DeliveryPipeline
-  description: The Cloud Deploy `DeliveryPipeline` resource
+  description: The Clouddeploy DeliveryPipeline resource
   x-dcl-struct-name: DeliveryPipeline
   x-dcl-has-iam: false
-  x-dcl-ref:
-    text: REST API
-    url: https://cloud.google.com/deploy/docs/api/reference/rest/v1/projects.locations.deliveryPipelines
 paths:
   get:
     description: The function used to get information about a DeliveryPipeline
@@ -174,8 +171,8 @@ components:
         name:
           type: string
           x-dcl-go-name: Name
-          description: Name of the `DeliveryPipeline`. Format is [a-z][a-z0-9\-]{0,62}.
-          x-kubernetes-immutable: true
+          description: Optional. Name of the `DeliveryPipeline`. Format is projects/{project}/
+            locations/{location}/deliveryPipelines/a-z{0,62}.
         project:
           type: string
           x-dcl-go-name: Project

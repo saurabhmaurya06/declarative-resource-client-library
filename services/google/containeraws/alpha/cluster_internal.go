@@ -20,6 +20,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"strings"
+	"time"
 
 	"github.com/GoogleCloudPlatform/declarative-resource-client-library/dcl"
 	"github.com/GoogleCloudPlatform/declarative-resource-client-library/dcl/operations"
@@ -500,20 +501,20 @@ func (op *deleteClusterOperation) do(ctx context.Context, r *Cluster, c *Client)
 		return err
 	}
 
-	// We saw a race condition where for some successful delete operation, the Get calls returned resources for a short duration.
-	// This is the reason we are adding retry to handle that case.
-	retriesRemaining := 10
-	dcl.Do(ctx, func(ctx context.Context) (*dcl.RetryDetails, error) {
-		_, err := c.GetCluster(ctx, r)
-		if dcl.IsNotFound(err) {
-			return nil, nil
+	// we saw a race condition where for some successful delete operation, the Get calls returned resources for a short duration.
+	// this is the reason we are adding retry to handle that case.
+	maxRetry := 10
+	for i := 1; i <= maxRetry; i++ {
+		_, err = c.GetCluster(ctx, r)
+		if !dcl.IsNotFound(err) {
+			if i == maxRetry {
+				return dcl.NotDeletedError{ExistingResource: r}
+			}
+			time.Sleep(1000 * time.Millisecond)
+		} else {
+			break
 		}
-		if retriesRemaining > 0 {
-			retriesRemaining--
-			return &dcl.RetryDetails{}, dcl.OperationNotDone{}
-		}
-		return nil, dcl.NotDeletedError{ExistingResource: r}
-	}, c.Config.RetryProvider)
+	}
 	return nil
 }
 
@@ -3017,7 +3018,7 @@ func compareClusterControlPlaneNewStyle(d, a interface{}, fn dcl.FieldName) ([]*
 		diffs = append(diffs, ds...)
 	}
 
-	if ds, err := dcl.Diff(desired.SshConfig, actual.SshConfig, dcl.Info{ObjectFunction: compareClusterControlPlaneSshConfigNewStyle, EmptyObject: EmptyClusterControlPlaneSshConfig, OperationSelector: dcl.TriggersOperation("updateClusterUpdateAwsClusterOperation")}, fn.AddNest("SshConfig")); len(ds) != 0 || err != nil {
+	if ds, err := dcl.Diff(desired.SshConfig, actual.SshConfig, dcl.Info{ObjectFunction: compareClusterControlPlaneSshConfigNewStyle, EmptyObject: EmptyClusterControlPlaneSshConfig, OperationSelector: dcl.RequiresRecreate()}, fn.AddNest("SshConfig")); len(ds) != 0 || err != nil {
 		if err != nil {
 			return nil, err
 		}
@@ -3123,7 +3124,7 @@ func compareClusterControlPlaneSshConfigNewStyle(d, a interface{}, fn dcl.FieldN
 		actual = &actualNotPointer
 	}
 
-	if ds, err := dcl.Diff(desired.Ec2KeyPair, actual.Ec2KeyPair, dcl.Info{OperationSelector: dcl.TriggersOperation("updateClusterUpdateAwsClusterOperation")}, fn.AddNest("Ec2KeyPair")); len(ds) != 0 || err != nil {
+	if ds, err := dcl.Diff(desired.Ec2KeyPair, actual.Ec2KeyPair, dcl.Info{OperationSelector: dcl.RequiresRecreate()}, fn.AddNest("Ec2KeyPair")); len(ds) != 0 || err != nil {
 		if err != nil {
 			return nil, err
 		}

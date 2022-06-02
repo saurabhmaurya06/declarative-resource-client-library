@@ -14,7 +14,7 @@
     "version": "1.21.5-gke.2800",
     "instanceType": "t3.large",
     "sshConfig": {
-      "ec2KeyPair": "updated-ec2-key-pair"
+      "ec2KeyPair": "{{byo_multicloud_prefix}}-1p-dev-ssh"
     },
     "subnetIds": ["{{aws_subnet}}"],
     "securityGroupIds": ["sg-1", "sg-2"],

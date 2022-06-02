@@ -49,10 +49,8 @@ class NotificationChannel(object):
         self.service_account_file = service_account_file
 
     def apply(self):
-        stub = (
-            notification_channel_pb2_grpc.MonitoringAlphaNotificationChannelServiceStub(
-                channel.Channel()
-            )
+        stub = notification_channel_pb2_grpc.MonitoringAlphaNotificationChannelServiceStub(
+            channel.Channel()
         )
         request = (
             notification_channel_pb2.ApplyMonitoringAlphaNotificationChannelRequest()
@@ -97,10 +95,8 @@ class NotificationChannel(object):
         self.project = Primitive.from_proto(response.project)
 
     def delete(self):
-        stub = (
-            notification_channel_pb2_grpc.MonitoringAlphaNotificationChannelServiceStub(
-                channel.Channel()
-            )
+        stub = notification_channel_pb2_grpc.MonitoringAlphaNotificationChannelServiceStub(
+            channel.Channel()
         )
         request = (
             notification_channel_pb2.DeleteMonitoringAlphaNotificationChannelRequest()
@@ -134,10 +130,8 @@ class NotificationChannel(object):
 
     @classmethod
     def list(self, project, service_account_file=""):
-        stub = (
-            notification_channel_pb2_grpc.MonitoringAlphaNotificationChannelServiceStub(
-                channel.Channel()
-            )
+        stub = notification_channel_pb2_grpc.MonitoringAlphaNotificationChannelServiceStub(
+            channel.Channel()
         )
         request = (
             notification_channel_pb2.ListMonitoringAlphaNotificationChannelRequest()

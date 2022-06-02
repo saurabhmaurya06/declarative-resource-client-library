@@ -755,10 +755,8 @@ class InstanceNetworkInterfacesAccessConfigs(object):
         if InstanceNetworkInterfacesAccessConfigsNetworkTierEnum.to_proto(
             resource.network_tier
         ):
-            res.network_tier = (
-                InstanceNetworkInterfacesAccessConfigsNetworkTierEnum.to_proto(
-                    resource.network_tier
-                )
+            res.network_tier = InstanceNetworkInterfacesAccessConfigsNetworkTierEnum.to_proto(
+                resource.network_tier
             )
         if InstanceNetworkInterfacesAccessConfigsTypeEnum.to_proto(resource.type):
             res.type = InstanceNetworkInterfacesAccessConfigsTypeEnum.to_proto(
@@ -849,10 +847,8 @@ class InstanceNetworkInterfacesIPv6AccessConfigs(object):
         if InstanceNetworkInterfacesIPv6AccessConfigsNetworkTierEnum.to_proto(
             resource.network_tier
         ):
-            res.network_tier = (
-                InstanceNetworkInterfacesIPv6AccessConfigsNetworkTierEnum.to_proto(
-                    resource.network_tier
-                )
+            res.network_tier = InstanceNetworkInterfacesIPv6AccessConfigsNetworkTierEnum.to_proto(
+                resource.network_tier
             )
         if InstanceNetworkInterfacesIPv6AccessConfigsTypeEnum.to_proto(resource.type):
             res.type = InstanceNetworkInterfacesIPv6AccessConfigsTypeEnum.to_proto(

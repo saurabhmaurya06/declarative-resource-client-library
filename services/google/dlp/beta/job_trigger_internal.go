@@ -13021,14 +13021,10 @@ func expandJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference(c *Cli
 	if v := f.ProjectId; !dcl.IsEmptyValueIndirect(v) {
 		m["projectId"] = v
 	}
-	if v, err := dcl.SelfLinkToNameExpander(f.DatasetId); err != nil {
-		return nil, fmt.Errorf("error expanding DatasetId into datasetId: %w", err)
-	} else if !dcl.IsEmptyValueIndirect(v) {
+	if v := f.DatasetId; !dcl.IsEmptyValueIndirect(v) {
 		m["datasetId"] = v
 	}
-	if v, err := dcl.SelfLinkToNameExpander(f.TableId); err != nil {
-		return nil, fmt.Errorf("error expanding TableId into tableId: %w", err)
-	} else if !dcl.IsEmptyValueIndirect(v) {
+	if v := f.TableId; !dcl.IsEmptyValueIndirect(v) {
 		m["tableId"] = v
 	}
 
@@ -18337,19 +18333,13 @@ func expandJobTriggerInspectJobActionsSaveFindingsOutputConfigTable(c *Client, f
 	}
 
 	m := make(map[string]interface{})
-	if v, err := dcl.SelfLinkToNameExpander(f.ProjectId); err != nil {
-		return nil, fmt.Errorf("error expanding ProjectId into projectId: %w", err)
-	} else if !dcl.IsEmptyValueIndirect(v) {
+	if v := f.ProjectId; !dcl.IsEmptyValueIndirect(v) {
 		m["projectId"] = v
 	}
-	if v, err := dcl.SelfLinkToNameExpander(f.DatasetId); err != nil {
-		return nil, fmt.Errorf("error expanding DatasetId into datasetId: %w", err)
-	} else if !dcl.IsEmptyValueIndirect(v) {
+	if v := f.DatasetId; !dcl.IsEmptyValueIndirect(v) {
 		m["datasetId"] = v
 	}
-	if v, err := dcl.SelfLinkToNameExpander(f.TableId); err != nil {
-		return nil, fmt.Errorf("error expanding TableId into tableId: %w", err)
-	} else if !dcl.IsEmptyValueIndirect(v) {
+	if v := f.TableId; !dcl.IsEmptyValueIndirect(v) {
 		m["tableId"] = v
 	}
 

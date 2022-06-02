@@ -75,13 +75,13 @@ class Policy(object):
             )
 
         if Primitive.to_proto(self.kubernetes_service_account_admission_rules):
-            request.resource.kubernetes_service_account_admission_rules = (
-                Primitive.to_proto(self.kubernetes_service_account_admission_rules)
+            request.resource.kubernetes_service_account_admission_rules = Primitive.to_proto(
+                self.kubernetes_service_account_admission_rules
             )
 
         if Primitive.to_proto(self.istio_service_identity_admission_rules):
-            request.resource.istio_service_identity_admission_rules = (
-                Primitive.to_proto(self.istio_service_identity_admission_rules)
+            request.resource.istio_service_identity_admission_rules = Primitive.to_proto(
+                self.istio_service_identity_admission_rules
             )
 
         if PolicyDefaultAdmissionRule.to_proto(self.default_admission_rule):
@@ -96,10 +96,8 @@ class Policy(object):
         if PolicyGlobalPolicyEvaluationModeEnum.to_proto(
             self.global_policy_evaluation_mode
         ):
-            request.resource.global_policy_evaluation_mode = (
-                PolicyGlobalPolicyEvaluationModeEnum.to_proto(
-                    self.global_policy_evaluation_mode
-                )
+            request.resource.global_policy_evaluation_mode = PolicyGlobalPolicyEvaluationModeEnum.to_proto(
+                self.global_policy_evaluation_mode
             )
 
         if Primitive.to_proto(self.project):
@@ -108,10 +106,8 @@ class Policy(object):
         request.service_account_file = self.service_account_file
 
         response = stub.ApplyBinaryauthorizationPolicy(request)
-        self.admission_whitelist_patterns = (
-            PolicyAdmissionWhitelistPatternsArray.from_proto(
-                response.admission_whitelist_patterns
-            )
+        self.admission_whitelist_patterns = PolicyAdmissionWhitelistPatternsArray.from_proto(
+            response.admission_whitelist_patterns
         )
         self.cluster_admission_rules = Primitive.from_proto(
             response.cluster_admission_rules
@@ -129,10 +125,8 @@ class Policy(object):
             response.default_admission_rule
         )
         self.description = Primitive.from_proto(response.description)
-        self.global_policy_evaluation_mode = (
-            PolicyGlobalPolicyEvaluationModeEnum.from_proto(
-                response.global_policy_evaluation_mode
-            )
+        self.global_policy_evaluation_mode = PolicyGlobalPolicyEvaluationModeEnum.from_proto(
+            response.global_policy_evaluation_mode
         )
         self.self_link = Primitive.from_proto(response.self_link)
         self.project = Primitive.from_proto(response.project)
@@ -161,13 +155,13 @@ class Policy(object):
             )
 
         if Primitive.to_proto(self.kubernetes_service_account_admission_rules):
-            request.resource.kubernetes_service_account_admission_rules = (
-                Primitive.to_proto(self.kubernetes_service_account_admission_rules)
+            request.resource.kubernetes_service_account_admission_rules = Primitive.to_proto(
+                self.kubernetes_service_account_admission_rules
             )
 
         if Primitive.to_proto(self.istio_service_identity_admission_rules):
-            request.resource.istio_service_identity_admission_rules = (
-                Primitive.to_proto(self.istio_service_identity_admission_rules)
+            request.resource.istio_service_identity_admission_rules = Primitive.to_proto(
+                self.istio_service_identity_admission_rules
             )
 
         if PolicyDefaultAdmissionRule.to_proto(self.default_admission_rule):
@@ -182,10 +176,8 @@ class Policy(object):
         if PolicyGlobalPolicyEvaluationModeEnum.to_proto(
             self.global_policy_evaluation_mode
         ):
-            request.resource.global_policy_evaluation_mode = (
-                PolicyGlobalPolicyEvaluationModeEnum.to_proto(
-                    self.global_policy_evaluation_mode
-                )
+            request.resource.global_policy_evaluation_mode = PolicyGlobalPolicyEvaluationModeEnum.to_proto(
+                self.global_policy_evaluation_mode
             )
 
         if Primitive.to_proto(self.project):
@@ -237,10 +229,8 @@ class Policy(object):
         if PolicyGlobalPolicyEvaluationModeEnum.to_proto(
             self.global_policy_evaluation_mode
         ):
-            resource.global_policy_evaluation_mode = (
-                PolicyGlobalPolicyEvaluationModeEnum.to_proto(
-                    self.global_policy_evaluation_mode
-                )
+            resource.global_policy_evaluation_mode = PolicyGlobalPolicyEvaluationModeEnum.to_proto(
+                self.global_policy_evaluation_mode
             )
         if Primitive.to_proto(self.project):
             resource.project = Primitive.to_proto(self.project)
@@ -303,10 +293,8 @@ class PolicyClusterAdmissionRules(object):
         if PolicyClusterAdmissionRulesEvaluationModeEnum.to_proto(
             resource.evaluation_mode
         ):
-            res.evaluation_mode = (
-                PolicyClusterAdmissionRulesEvaluationModeEnum.to_proto(
-                    resource.evaluation_mode
-                )
+            res.evaluation_mode = PolicyClusterAdmissionRulesEvaluationModeEnum.to_proto(
+                resource.evaluation_mode
             )
         if Primitive.to_proto(resource.require_attestations_by):
             res.require_attestations_by.extend(
@@ -315,10 +303,8 @@ class PolicyClusterAdmissionRules(object):
         if PolicyClusterAdmissionRulesEnforcementModeEnum.to_proto(
             resource.enforcement_mode
         ):
-            res.enforcement_mode = (
-                PolicyClusterAdmissionRulesEnforcementModeEnum.to_proto(
-                    resource.enforcement_mode
-                )
+            res.enforcement_mode = PolicyClusterAdmissionRulesEnforcementModeEnum.to_proto(
+                resource.enforcement_mode
             )
         return res
 
@@ -372,10 +358,8 @@ class PolicyKubernetesNamespaceAdmissionRules(object):
         if PolicyKubernetesNamespaceAdmissionRulesEvaluationModeEnum.to_proto(
             resource.evaluation_mode
         ):
-            res.evaluation_mode = (
-                PolicyKubernetesNamespaceAdmissionRulesEvaluationModeEnum.to_proto(
-                    resource.evaluation_mode
-                )
+            res.evaluation_mode = PolicyKubernetesNamespaceAdmissionRulesEvaluationModeEnum.to_proto(
+                resource.evaluation_mode
             )
         if Primitive.to_proto(resource.require_attestations_by):
             res.require_attestations_by.extend(
@@ -384,10 +368,8 @@ class PolicyKubernetesNamespaceAdmissionRules(object):
         if PolicyKubernetesNamespaceAdmissionRulesEnforcementModeEnum.to_proto(
             resource.enforcement_mode
         ):
-            res.enforcement_mode = (
-                PolicyKubernetesNamespaceAdmissionRulesEnforcementModeEnum.to_proto(
-                    resource.enforcement_mode
-                )
+            res.enforcement_mode = PolicyKubernetesNamespaceAdmissionRulesEnforcementModeEnum.to_proto(
+                resource.enforcement_mode
             )
         return res
 
@@ -445,10 +427,8 @@ class PolicyKubernetesServiceAccountAdmissionRules(object):
         if PolicyKubernetesServiceAccountAdmissionRulesEvaluationModeEnum.to_proto(
             resource.evaluation_mode
         ):
-            res.evaluation_mode = (
-                PolicyKubernetesServiceAccountAdmissionRulesEvaluationModeEnum.to_proto(
-                    resource.evaluation_mode
-                )
+            res.evaluation_mode = PolicyKubernetesServiceAccountAdmissionRulesEvaluationModeEnum.to_proto(
+                resource.evaluation_mode
             )
         if Primitive.to_proto(resource.require_attestations_by):
             res.require_attestations_by.extend(
@@ -517,10 +497,8 @@ class PolicyIstioServiceIdentityAdmissionRules(object):
         if PolicyIstioServiceIdentityAdmissionRulesEvaluationModeEnum.to_proto(
             resource.evaluation_mode
         ):
-            res.evaluation_mode = (
-                PolicyIstioServiceIdentityAdmissionRulesEvaluationModeEnum.to_proto(
-                    resource.evaluation_mode
-                )
+            res.evaluation_mode = PolicyIstioServiceIdentityAdmissionRulesEvaluationModeEnum.to_proto(
+                resource.evaluation_mode
             )
         if Primitive.to_proto(resource.require_attestations_by):
             res.require_attestations_by.extend(
@@ -529,10 +507,8 @@ class PolicyIstioServiceIdentityAdmissionRules(object):
         if PolicyIstioServiceIdentityAdmissionRulesEnforcementModeEnum.to_proto(
             resource.enforcement_mode
         ):
-            res.enforcement_mode = (
-                PolicyIstioServiceIdentityAdmissionRulesEnforcementModeEnum.to_proto(
-                    resource.enforcement_mode
-                )
+            res.enforcement_mode = PolicyIstioServiceIdentityAdmissionRulesEnforcementModeEnum.to_proto(
+                resource.enforcement_mode
             )
         return res
 
@@ -598,10 +574,8 @@ class PolicyDefaultAdmissionRule(object):
         if PolicyDefaultAdmissionRuleEnforcementModeEnum.to_proto(
             resource.enforcement_mode
         ):
-            res.enforcement_mode = (
-                PolicyDefaultAdmissionRuleEnforcementModeEnum.to_proto(
-                    resource.enforcement_mode
-                )
+            res.enforcement_mode = PolicyDefaultAdmissionRuleEnforcementModeEnum.to_proto(
+                resource.enforcement_mode
             )
         return res
 

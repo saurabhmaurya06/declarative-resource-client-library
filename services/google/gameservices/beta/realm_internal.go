@@ -20,6 +20,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"strings"
+	"time"
 
 	"github.com/GoogleCloudPlatform/declarative-resource-client-library/dcl"
 	"github.com/GoogleCloudPlatform/declarative-resource-client-library/dcl/operations"
@@ -282,20 +283,20 @@ func (op *deleteRealmOperation) do(ctx context.Context, r *Realm, c *Client) err
 		return err
 	}
 
-	// We saw a race condition where for some successful delete operation, the Get calls returned resources for a short duration.
-	// This is the reason we are adding retry to handle that case.
-	retriesRemaining := 10
-	dcl.Do(ctx, func(ctx context.Context) (*dcl.RetryDetails, error) {
-		_, err := c.GetRealm(ctx, r)
-		if dcl.IsNotFound(err) {
-			return nil, nil
+	// we saw a race condition where for some successful delete operation, the Get calls returned resources for a short duration.
+	// this is the reason we are adding retry to handle that case.
+	maxRetry := 10
+	for i := 1; i <= maxRetry; i++ {
+		_, err = c.GetRealm(ctx, r)
+		if !dcl.IsNotFound(err) {
+			if i == maxRetry {
+				return dcl.NotDeletedError{ExistingResource: r}
+			}
+			time.Sleep(1000 * time.Millisecond)
+		} else {
+			break
 		}
-		if retriesRemaining > 0 {
-			retriesRemaining--
-			return &dcl.RetryDetails{}, dcl.OperationNotDone{}
-		}
-		return nil, dcl.NotDeletedError{ExistingResource: r}
-	}, c.Config.RetryProvider)
+	}
 	return nil
 }
 
@@ -489,11 +490,6 @@ func canonicalizeRealmNewState(c *Client, rawNew, rawDesired *Realm) (*Realm, er
 	} else {
 	}
 
-	if dcl.IsNotReturnedByServer(rawNew.UpdateTime) && dcl.IsNotReturnedByServer(rawDesired.UpdateTime) {
-		rawNew.UpdateTime = rawDesired.UpdateTime
-	} else {
-	}
-
 	if dcl.IsNotReturnedByServer(rawNew.Labels) && dcl.IsNotReturnedByServer(rawDesired.Labels) {
 		rawNew.Labels = rawDesired.Labels
 	} else {
@@ -548,13 +544,6 @@ func diffRealm(c *Client, desired, actual *Realm, opts ...dcl.ApplyOption) ([]*d
 	}
 
 	if ds, err := dcl.Diff(desired.CreateTime, actual.CreateTime, dcl.Info{OutputOnly: true, OperationSelector: dcl.RequiresRecreate()}, fn.AddNest("CreateTime")); len(ds) != 0 || err != nil {
-		if err != nil {
-			return nil, err
-		}
-		newDiffs = append(newDiffs, ds...)
-	}
-
-	if ds, err := dcl.Diff(desired.UpdateTime, actual.UpdateTime, dcl.Info{OutputOnly: true, OperationSelector: dcl.RequiresRecreate()}, fn.AddNest("UpdateTime")); len(ds) != 0 || err != nil {
 		if err != nil {
 			return nil, err
 		}
@@ -702,7 +691,6 @@ func flattenRealm(c *Client, i interface{}, res *Realm) *Realm {
 	resultRes := &Realm{}
 	resultRes.Name = dcl.FlattenString(m["name"])
 	resultRes.CreateTime = dcl.FlattenString(m["createTime"])
-	resultRes.UpdateTime = dcl.FlattenString(m["updateTime"])
 	resultRes.Labels = dcl.FlattenKeyValuePairs(m["labels"])
 	resultRes.TimeZone = dcl.FlattenString(m["timeZone"])
 	resultRes.Description = dcl.FlattenString(m["description"])

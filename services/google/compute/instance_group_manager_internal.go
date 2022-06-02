@@ -20,6 +20,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"strings"
+	"time"
 
 	"github.com/GoogleCloudPlatform/declarative-resource-client-library/dcl"
 	"github.com/GoogleCloudPlatform/declarative-resource-client-library/dcl/operations"
@@ -27,13 +28,7 @@ import (
 
 func (r *InstanceGroupManager) validate() error {
 
-	if err := dcl.ValidateExactlyOneOfFieldsSet([]string{"InstanceTemplate", "Versions"}, r.InstanceTemplate, r.Versions); err != nil {
-		return err
-	}
 	if err := dcl.Required(r, "name"); err != nil {
-		return err
-	}
-	if err := dcl.Required(r, "targetSize"); err != nil {
 		return err
 	}
 	if err := dcl.RequiredParameter(r.Project, "Project"); err != nil {
@@ -612,20 +607,20 @@ func (op *deleteInstanceGroupManagerOperation) do(ctx context.Context, r *Instan
 		return err
 	}
 
-	// We saw a race condition where for some successful delete operation, the Get calls returned resources for a short duration.
-	// This is the reason we are adding retry to handle that case.
-	retriesRemaining := 10
-	dcl.Do(ctx, func(ctx context.Context) (*dcl.RetryDetails, error) {
-		_, err := c.GetInstanceGroupManager(ctx, r)
-		if dcl.IsNotFound(err) {
-			return nil, nil
+	// we saw a race condition where for some successful delete operation, the Get calls returned resources for a short duration.
+	// this is the reason we are adding retry to handle that case.
+	maxRetry := 10
+	for i := 1; i <= maxRetry; i++ {
+		_, err = c.GetInstanceGroupManager(ctx, r)
+		if !dcl.IsNotFound(err) {
+			if i == maxRetry {
+				return dcl.NotDeletedError{ExistingResource: r}
+			}
+			time.Sleep(1000 * time.Millisecond)
+		} else {
+			break
 		}
-		if retriesRemaining > 0 {
-			retriesRemaining--
-			return &dcl.RetryDetails{}, dcl.OperationNotDone{}
-		}
-		return nil, dcl.NotDeletedError{ExistingResource: r}
-	}, c.Config.RetryProvider)
+	}
 	return nil
 }
 
@@ -750,21 +745,6 @@ func (c *Client) instanceGroupManagerDiffsForRawDesired(ctx context.Context, raw
 
 func canonicalizeInstanceGroupManagerInitialState(rawInitial, rawDesired *InstanceGroupManager) (*InstanceGroupManager, error) {
 	// TODO(magic-modules-eng): write canonicalizer once relevant traits are added.
-
-	if !dcl.IsZeroValue(rawInitial.InstanceTemplate) {
-		// Check if anything else is set.
-		if dcl.AnySet(rawInitial.Versions) {
-			rawInitial.InstanceTemplate = dcl.String("")
-		}
-	}
-
-	if !dcl.IsZeroValue(rawInitial.Versions) {
-		// Check if anything else is set.
-		if dcl.AnySet(rawInitial.InstanceTemplate) {
-			rawInitial.Versions = []InstanceGroupManagerVersions{}
-		}
-	}
-
 	return rawInitial, nil
 }
 
@@ -788,23 +768,6 @@ func canonicalizeInstanceGroupManagerDesiredState(rawDesired, rawInitial *Instan
 
 		return rawDesired, nil
 	}
-
-	if rawDesired.InstanceTemplate != nil || rawInitial.InstanceTemplate != nil {
-		// Check if anything else is set.
-		if dcl.AnySet(rawDesired.Versions) {
-			rawDesired.InstanceTemplate = nil
-			rawInitial.InstanceTemplate = nil
-		}
-	}
-
-	if rawDesired.Versions != nil || rawInitial.Versions != nil {
-		// Check if anything else is set.
-		if dcl.AnySet(rawDesired.InstanceTemplate) {
-			rawDesired.Versions = nil
-			rawInitial.Versions = nil
-		}
-	}
-
 	canonicalDesired := &InstanceGroupManager{}
 	if dcl.StringCanonicalize(rawDesired.Name, rawInitial.Name) {
 		canonicalDesired.Name = rawInitial.Name
@@ -3854,7 +3817,7 @@ func (r *InstanceGroupManager) urlNormalized() *InstanceGroupManager {
 	normalized.Description = dcl.SelfLinkToName(r.Description)
 	normalized.Zone = dcl.SelfLinkToName(r.Zone)
 	normalized.Region = dcl.SelfLinkToName(r.Region)
-	normalized.InstanceTemplate = dcl.SelfLinkToName(r.InstanceTemplate)
+	normalized.InstanceTemplate = r.InstanceTemplate
 	normalized.InstanceGroup = dcl.SelfLinkToName(r.InstanceGroup)
 	normalized.BaseInstanceName = dcl.SelfLinkToName(r.BaseInstanceName)
 	normalized.Fingerprint = dcl.SelfLinkToName(r.Fingerprint)
@@ -4037,8 +4000,8 @@ func flattenInstanceGroupManager(c *Client, i interface{}, res *InstanceGroupMan
 	resultRes.Zone = dcl.FlattenString(m["zone"])
 	resultRes.Region = dcl.FlattenString(m["region"])
 	resultRes.DistributionPolicy = flattenInstanceGroupManagerDistributionPolicy(c, m["distributionPolicy"], res)
-	resultRes.InstanceTemplate = flattenInstanceGroupManagerInstanceTemplateWithConflict(c, m["instanceTemplate"], res)
-	resultRes.Versions = flattenInstanceGroupManagerVersionsWithConflict(c, m["versions"], res)
+	resultRes.InstanceTemplate = dcl.FlattenString(m["instanceTemplate"])
+	resultRes.Versions = flattenInstanceGroupManagerVersionsSlice(c, m["versions"], res)
 	resultRes.InstanceGroup = dcl.FlattenString(m["instanceGroup"])
 	resultRes.TargetPools = dcl.FlattenStringSlice(m["targetPools"])
 	resultRes.BaseInstanceName = dcl.FlattenString(m["baseInstanceName"])

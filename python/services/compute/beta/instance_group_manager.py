@@ -73,10 +73,8 @@ class InstanceGroupManager(object):
         self.service_account_file = service_account_file
 
     def apply(self):
-        stub = (
-            instance_group_manager_pb2_grpc.ComputeBetaInstanceGroupManagerServiceStub(
-                channel.Channel()
-            )
+        stub = instance_group_manager_pb2_grpc.ComputeBetaInstanceGroupManagerServiceStub(
+            channel.Channel()
         )
         request = (
             instance_group_manager_pb2.ApplyComputeBetaInstanceGroupManagerRequest()
@@ -142,8 +140,8 @@ class InstanceGroupManager(object):
             request.resource.service_account = Primitive.to_proto(self.service_account)
 
         if InstanceGroupManagerFailoverActionEnum.to_proto(self.failover_action):
-            request.resource.failover_action = (
-                InstanceGroupManagerFailoverActionEnum.to_proto(self.failover_action)
+            request.resource.failover_action = InstanceGroupManagerFailoverActionEnum.to_proto(
+                self.failover_action
             )
 
         if Primitive.to_proto(self.project):
@@ -176,10 +174,8 @@ class InstanceGroupManager(object):
         self.status = InstanceGroupManagerStatus.from_proto(response.status)
         self.target_size = Primitive.from_proto(response.target_size)
         self.self_link = Primitive.from_proto(response.self_link)
-        self.auto_healing_policies = (
-            InstanceGroupManagerAutoHealingPoliciesArray.from_proto(
-                response.auto_healing_policies
-            )
+        self.auto_healing_policies = InstanceGroupManagerAutoHealingPoliciesArray.from_proto(
+            response.auto_healing_policies
         )
         self.update_policy = InstanceGroupManagerUpdatePolicy.from_proto(
             response.update_policy
@@ -198,10 +194,8 @@ class InstanceGroupManager(object):
         self.location = Primitive.from_proto(response.location)
 
     def delete(self):
-        stub = (
-            instance_group_manager_pb2_grpc.ComputeBetaInstanceGroupManagerServiceStub(
-                channel.Channel()
-            )
+        stub = instance_group_manager_pb2_grpc.ComputeBetaInstanceGroupManagerServiceStub(
+            channel.Channel()
         )
         request = (
             instance_group_manager_pb2.DeleteComputeBetaInstanceGroupManagerRequest()
@@ -268,8 +262,8 @@ class InstanceGroupManager(object):
             request.resource.service_account = Primitive.to_proto(self.service_account)
 
         if InstanceGroupManagerFailoverActionEnum.to_proto(self.failover_action):
-            request.resource.failover_action = (
-                InstanceGroupManagerFailoverActionEnum.to_proto(self.failover_action)
+            request.resource.failover_action = InstanceGroupManagerFailoverActionEnum.to_proto(
+                self.failover_action
             )
 
         if Primitive.to_proto(self.project):
@@ -282,10 +276,8 @@ class InstanceGroupManager(object):
 
     @classmethod
     def list(self, project, location, service_account_file=""):
-        stub = (
-            instance_group_manager_pb2_grpc.ComputeBetaInstanceGroupManagerServiceStub(
-                channel.Channel()
-            )
+        stub = instance_group_manager_pb2_grpc.ComputeBetaInstanceGroupManagerServiceStub(
+            channel.Channel()
         )
         request = (
             instance_group_manager_pb2.ListComputeBetaInstanceGroupManagerRequest()
@@ -382,10 +374,8 @@ class InstanceGroupManagerDistributionPolicy(object):
         if InstanceGroupManagerDistributionPolicyTargetShapeEnum.to_proto(
             resource.target_shape
         ):
-            res.target_shape = (
-                InstanceGroupManagerDistributionPolicyTargetShapeEnum.to_proto(
-                    resource.target_shape
-                )
+            res.target_shape = InstanceGroupManagerDistributionPolicyTargetShapeEnum.to_proto(
+                resource.target_shape
             )
         return res
 
@@ -924,18 +914,14 @@ class InstanceGroupManagerUpdatePolicy(object):
         if InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeEnum.to_proto(
             resource.instance_redistribution_type
         ):
-            res.instance_redistribution_type = (
-                InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeEnum.to_proto(
-                    resource.instance_redistribution_type
-                )
+            res.instance_redistribution_type = InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeEnum.to_proto(
+                resource.instance_redistribution_type
             )
         if InstanceGroupManagerUpdatePolicyMinimalActionEnum.to_proto(
             resource.minimal_action
         ):
-            res.minimal_action = (
-                InstanceGroupManagerUpdatePolicyMinimalActionEnum.to_proto(
-                    resource.minimal_action
-                )
+            res.minimal_action = InstanceGroupManagerUpdatePolicyMinimalActionEnum.to_proto(
+                resource.minimal_action
             )
         if InstanceGroupManagerUpdatePolicyMaxSurge.to_proto(resource.max_surge):
             res.max_surge.CopyFrom(
@@ -956,10 +942,8 @@ class InstanceGroupManagerUpdatePolicy(object):
         if InstanceGroupManagerUpdatePolicyReplacementMethodEnum.to_proto(
             resource.replacement_method
         ):
-            res.replacement_method = (
-                InstanceGroupManagerUpdatePolicyReplacementMethodEnum.to_proto(
-                    resource.replacement_method
-                )
+            res.replacement_method = InstanceGroupManagerUpdatePolicyReplacementMethodEnum.to_proto(
+                resource.replacement_method
             )
         if InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionEnum.to_proto(
             resource.most_disruptive_allowed_action
@@ -1199,12 +1183,8 @@ class InstanceGroupManagerStatefulPolicyArray(object):
 
 
 class InstanceGroupManagerStatefulPolicyPreservedState(object):
-    def __init__(
-        self, disks: dict = None, internal_ips: dict = None, external_ips: dict = None
-    ):
+    def __init__(self, disks: dict = None):
         self.disks = disks
-        self.internal_ips = internal_ips
-        self.external_ips = external_ips
 
     @classmethod
     def to_proto(self, resource):
@@ -1216,10 +1196,6 @@ class InstanceGroupManagerStatefulPolicyPreservedState(object):
         )
         if Primitive.to_proto(resource.disks):
             res.disks = Primitive.to_proto(resource.disks)
-        if Primitive.to_proto(resource.internal_ips):
-            res.internal_ips = Primitive.to_proto(resource.internal_ips)
-        if Primitive.to_proto(resource.external_ips):
-            res.external_ips = Primitive.to_proto(resource.external_ips)
         return res
 
     @classmethod
@@ -1229,8 +1205,6 @@ class InstanceGroupManagerStatefulPolicyPreservedState(object):
 
         return InstanceGroupManagerStatefulPolicyPreservedState(
             disks=Primitive.from_proto(resource.disks),
-            internal_ips=Primitive.from_proto(resource.internal_ips),
-            external_ips=Primitive.from_proto(resource.external_ips),
         )
 
 
@@ -1298,106 +1272,6 @@ class InstanceGroupManagerStatefulPolicyPreservedStateDisksArray(object):
     def from_proto(self, resources):
         return [
             InstanceGroupManagerStatefulPolicyPreservedStateDisks.from_proto(i)
-            for i in resources
-        ]
-
-
-class InstanceGroupManagerStatefulPolicyPreservedStateInternalIps(object):
-    def __init__(self, auto_delete: str = None):
-        self.auto_delete = auto_delete
-
-    @classmethod
-    def to_proto(self, resource):
-        if not resource:
-            return None
-
-        res = (
-            instance_group_manager_pb2.ComputeBetaInstanceGroupManagerStatefulPolicyPreservedStateInternalIps()
-        )
-        if InstanceGroupManagerStatefulPolicyPreservedStateInternalIpsAutoDeleteEnum.to_proto(
-            resource.auto_delete
-        ):
-            res.auto_delete = InstanceGroupManagerStatefulPolicyPreservedStateInternalIpsAutoDeleteEnum.to_proto(
-                resource.auto_delete
-            )
-        return res
-
-    @classmethod
-    def from_proto(self, resource):
-        if not resource:
-            return None
-
-        return InstanceGroupManagerStatefulPolicyPreservedStateInternalIps(
-            auto_delete=InstanceGroupManagerStatefulPolicyPreservedStateInternalIpsAutoDeleteEnum.from_proto(
-                resource.auto_delete
-            ),
-        )
-
-
-class InstanceGroupManagerStatefulPolicyPreservedStateInternalIpsArray(object):
-    @classmethod
-    def to_proto(self, resources):
-        if not resources:
-            return resources
-        return [
-            InstanceGroupManagerStatefulPolicyPreservedStateInternalIps.to_proto(i)
-            for i in resources
-        ]
-
-    @classmethod
-    def from_proto(self, resources):
-        return [
-            InstanceGroupManagerStatefulPolicyPreservedStateInternalIps.from_proto(i)
-            for i in resources
-        ]
-
-
-class InstanceGroupManagerStatefulPolicyPreservedStateExternalIps(object):
-    def __init__(self, auto_delete: str = None):
-        self.auto_delete = auto_delete
-
-    @classmethod
-    def to_proto(self, resource):
-        if not resource:
-            return None
-
-        res = (
-            instance_group_manager_pb2.ComputeBetaInstanceGroupManagerStatefulPolicyPreservedStateExternalIps()
-        )
-        if InstanceGroupManagerStatefulPolicyPreservedStateExternalIpsAutoDeleteEnum.to_proto(
-            resource.auto_delete
-        ):
-            res.auto_delete = InstanceGroupManagerStatefulPolicyPreservedStateExternalIpsAutoDeleteEnum.to_proto(
-                resource.auto_delete
-            )
-        return res
-
-    @classmethod
-    def from_proto(self, resource):
-        if not resource:
-            return None
-
-        return InstanceGroupManagerStatefulPolicyPreservedStateExternalIps(
-            auto_delete=InstanceGroupManagerStatefulPolicyPreservedStateExternalIpsAutoDeleteEnum.from_proto(
-                resource.auto_delete
-            ),
-        )
-
-
-class InstanceGroupManagerStatefulPolicyPreservedStateExternalIpsArray(object):
-    @classmethod
-    def to_proto(self, resources):
-        if not resources:
-            return resources
-        return [
-            InstanceGroupManagerStatefulPolicyPreservedStateExternalIps.to_proto(i)
-            for i in resources
-        ]
-
-    @classmethod
-    def from_proto(self, resources):
-        return [
-            InstanceGroupManagerStatefulPolicyPreservedStateExternalIps.from_proto(i)
             for i in resources
         ]
 
@@ -1549,52 +1423,6 @@ class InstanceGroupManagerStatefulPolicyPreservedStateDisksAutoDeleteEnum(object
         )[
             len(
                 "ComputeBetaInstanceGroupManagerStatefulPolicyPreservedStateDisksAutoDeleteEnum"
-            ) :
-        ]
-
-
-class InstanceGroupManagerStatefulPolicyPreservedStateInternalIpsAutoDeleteEnum(object):
-    @classmethod
-    def to_proto(self, resource):
-        if not resource:
-            return resource
-        return instance_group_manager_pb2.ComputeBetaInstanceGroupManagerStatefulPolicyPreservedStateInternalIpsAutoDeleteEnum.Value(
-            "ComputeBetaInstanceGroupManagerStatefulPolicyPreservedStateInternalIpsAutoDeleteEnum%s"
-            % resource
-        )
-
-    @classmethod
-    def from_proto(self, resource):
-        if not resource:
-            return resource
-        return instance_group_manager_pb2.ComputeBetaInstanceGroupManagerStatefulPolicyPreservedStateInternalIpsAutoDeleteEnum.Name(
-            resource
-        )[
-            len(
-                "ComputeBetaInstanceGroupManagerStatefulPolicyPreservedStateInternalIpsAutoDeleteEnum"
-            ) :
-        ]
-
-
-class InstanceGroupManagerStatefulPolicyPreservedStateExternalIpsAutoDeleteEnum(object):
-    @classmethod
-    def to_proto(self, resource):
-        if not resource:
-            return resource
-        return instance_group_manager_pb2.ComputeBetaInstanceGroupManagerStatefulPolicyPreservedStateExternalIpsAutoDeleteEnum.Value(
-            "ComputeBetaInstanceGroupManagerStatefulPolicyPreservedStateExternalIpsAutoDeleteEnum%s"
-            % resource
-        )
-
-    @classmethod
-    def from_proto(self, resource):
-        if not resource:
-            return resource
-        return instance_group_manager_pb2.ComputeBetaInstanceGroupManagerStatefulPolicyPreservedStateExternalIpsAutoDeleteEnum.Name(
-            resource
-        )[
-            len(
-                "ComputeBetaInstanceGroupManagerStatefulPolicyPreservedStateExternalIpsAutoDeleteEnum"
             ) :
         ]
 

@@ -338,10 +338,8 @@ class MetricDescriptorMetricKindEnum(object):
     def to_proto(self, resource):
         if not resource:
             return resource
-        return (
-            metric_descriptor_pb2.MonitoringAlphaMetricDescriptorMetricKindEnum.Value(
-                "MonitoringAlphaMetricDescriptorMetricKindEnum%s" % resource
-            )
+        return metric_descriptor_pb2.MonitoringAlphaMetricDescriptorMetricKindEnum.Value(
+            "MonitoringAlphaMetricDescriptorMetricKindEnum%s" % resource
         )
 
     @classmethod
@@ -396,21 +394,19 @@ class MetricDescriptorLaunchStageEnum(object):
     def to_proto(self, resource):
         if not resource:
             return resource
-        return (
-            metric_descriptor_pb2.MonitoringAlphaMetricDescriptorLaunchStageEnum.Value(
-                "MonitoringAlphaMetricDescriptorLaunchStageEnum%s" % resource
-            )
+        return metric_descriptor_pb2.MonitoringAlphaMetricDescriptorLaunchStageEnum.Value(
+            "MonitoringAlphaMetricDescriptorLaunchStageEnum%s" % resource
         )
 
     @classmethod
     def from_proto(self, resource):
         if not resource:
             return resource
-        return (
-            metric_descriptor_pb2.MonitoringAlphaMetricDescriptorLaunchStageEnum.Name(
-                resource
-            )[len("MonitoringAlphaMetricDescriptorLaunchStageEnum") :]
-        )
+        return metric_descriptor_pb2.MonitoringAlphaMetricDescriptorLaunchStageEnum.Name(
+            resource
+        )[
+            len("MonitoringAlphaMetricDescriptorLaunchStageEnum") :
+        ]
 
 
 class Primitive(object):

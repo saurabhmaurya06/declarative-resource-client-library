@@ -83,7 +83,6 @@ func ProtoToContainerawsAlphaNodePoolConfig(p *alphapb.ContainerawsAlphaNodePool
 		IamInstanceProfile: dcl.StringOrNil(p.GetIamInstanceProfile()),
 		ConfigEncryption:   ProtoToContainerawsAlphaNodePoolConfigConfigEncryption(p.GetConfigEncryption()),
 		SshConfig:          ProtoToContainerawsAlphaNodePoolConfigSshConfig(p.GetSshConfig()),
-		ProxyConfig:        ProtoToContainerawsAlphaNodePoolConfigProxyConfig(p.GetProxyConfig()),
 		InstancePlacement:  ProtoToContainerawsAlphaNodePoolConfigInstancePlacement(p.GetInstancePlacement()),
 		ImageType:          dcl.StringOrNil(p.GetImageType()),
 	}
@@ -141,18 +140,6 @@ func ProtoToContainerawsAlphaNodePoolConfigSshConfig(p *alphapb.ContainerawsAlph
 	}
 	obj := &alpha.NodePoolConfigSshConfig{
 		Ec2KeyPair: dcl.StringOrNil(p.GetEc2KeyPair()),
-	}
-	return obj
-}
-
-// ProtoToNodePoolConfigProxyConfig converts a NodePoolConfigProxyConfig object from its proto representation.
-func ProtoToContainerawsAlphaNodePoolConfigProxyConfig(p *alphapb.ContainerawsAlphaNodePoolConfigProxyConfig) *alpha.NodePoolConfigProxyConfig {
-	if p == nil {
-		return nil
-	}
-	obj := &alpha.NodePoolConfigProxyConfig{
-		SecretArn:     dcl.StringOrNil(p.GetSecretArn()),
-		SecretVersion: dcl.StringOrNil(p.GetSecretVersion()),
 	}
 	return obj
 }
@@ -268,7 +255,6 @@ func ContainerawsAlphaNodePoolConfigToProto(o *alpha.NodePoolConfig) *alphapb.Co
 	p.SetIamInstanceProfile(dcl.ValueOrEmptyString(o.IamInstanceProfile))
 	p.SetConfigEncryption(ContainerawsAlphaNodePoolConfigConfigEncryptionToProto(o.ConfigEncryption))
 	p.SetSshConfig(ContainerawsAlphaNodePoolConfigSshConfigToProto(o.SshConfig))
-	p.SetProxyConfig(ContainerawsAlphaNodePoolConfigProxyConfigToProto(o.ProxyConfig))
 	p.SetInstancePlacement(ContainerawsAlphaNodePoolConfigInstancePlacementToProto(o.InstancePlacement))
 	p.SetImageType(dcl.ValueOrEmptyString(o.ImageType))
 	sTaints := make([]*alphapb.ContainerawsAlphaNodePoolConfigTaints, len(o.Taints))
@@ -336,17 +322,6 @@ func ContainerawsAlphaNodePoolConfigSshConfigToProto(o *alpha.NodePoolConfigSshC
 	}
 	p := &alphapb.ContainerawsAlphaNodePoolConfigSshConfig{}
 	p.SetEc2KeyPair(dcl.ValueOrEmptyString(o.Ec2KeyPair))
-	return p
-}
-
-// NodePoolConfigProxyConfigToProto converts a NodePoolConfigProxyConfig object to its proto representation.
-func ContainerawsAlphaNodePoolConfigProxyConfigToProto(o *alpha.NodePoolConfigProxyConfig) *alphapb.ContainerawsAlphaNodePoolConfigProxyConfig {
-	if o == nil {
-		return nil
-	}
-	p := &alphapb.ContainerawsAlphaNodePoolConfigProxyConfig{}
-	p.SetSecretArn(dcl.ValueOrEmptyString(o.SecretArn))
-	p.SetSecretVersion(dcl.ValueOrEmptyString(o.SecretVersion))
 	return p
 }
 

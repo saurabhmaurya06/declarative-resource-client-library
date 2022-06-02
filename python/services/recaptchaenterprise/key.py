@@ -216,10 +216,8 @@ class KeyWebSettings(object):
         if KeyWebSettingsChallengeSecurityPreferenceEnum.to_proto(
             resource.challenge_security_preference
         ):
-            res.challenge_security_preference = (
-                KeyWebSettingsChallengeSecurityPreferenceEnum.to_proto(
-                    resource.challenge_security_preference
-                )
+            res.challenge_security_preference = KeyWebSettingsChallengeSecurityPreferenceEnum.to_proto(
+                resource.challenge_security_preference
             )
         return res
 

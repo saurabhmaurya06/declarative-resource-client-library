@@ -138,10 +138,8 @@ class Function(object):
         if FunctionVPCConnectorEgressSettingsEnum.to_proto(
             self.vpc_connector_egress_settings
         ):
-            request.resource.vpc_connector_egress_settings = (
-                FunctionVPCConnectorEgressSettingsEnum.to_proto(
-                    self.vpc_connector_egress_settings
-                )
+            request.resource.vpc_connector_egress_settings = FunctionVPCConnectorEgressSettingsEnum.to_proto(
+                self.vpc_connector_egress_settings
             )
 
         if FunctionIngressSettingsEnum.to_proto(self.ingress_settings):
@@ -182,10 +180,8 @@ class Function(object):
         )
         self.max_instances = Primitive.from_proto(response.max_instances)
         self.vpc_connector = Primitive.from_proto(response.vpc_connector)
-        self.vpc_connector_egress_settings = (
-            FunctionVPCConnectorEgressSettingsEnum.from_proto(
-                response.vpc_connector_egress_settings
-            )
+        self.vpc_connector_egress_settings = FunctionVPCConnectorEgressSettingsEnum.from_proto(
+            response.vpc_connector_egress_settings
         )
         self.ingress_settings = FunctionIngressSettingsEnum.from_proto(
             response.ingress_settings
@@ -262,10 +258,8 @@ class Function(object):
         if FunctionVPCConnectorEgressSettingsEnum.to_proto(
             self.vpc_connector_egress_settings
         ):
-            request.resource.vpc_connector_egress_settings = (
-                FunctionVPCConnectorEgressSettingsEnum.to_proto(
-                    self.vpc_connector_egress_settings
-                )
+            request.resource.vpc_connector_egress_settings = FunctionVPCConnectorEgressSettingsEnum.to_proto(
+                self.vpc_connector_egress_settings
             )
 
         if FunctionIngressSettingsEnum.to_proto(self.ingress_settings):
@@ -343,10 +337,8 @@ class Function(object):
         if FunctionVPCConnectorEgressSettingsEnum.to_proto(
             self.vpc_connector_egress_settings
         ):
-            resource.vpc_connector_egress_settings = (
-                FunctionVPCConnectorEgressSettingsEnum.to_proto(
-                    self.vpc_connector_egress_settings
-                )
+            resource.vpc_connector_egress_settings = FunctionVPCConnectorEgressSettingsEnum.to_proto(
+                self.vpc_connector_egress_settings
             )
         if FunctionIngressSettingsEnum.to_proto(self.ingress_settings):
             resource.ingress_settings = FunctionIngressSettingsEnum.to_proto(

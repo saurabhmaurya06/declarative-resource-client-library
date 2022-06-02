@@ -264,9 +264,7 @@ class FeatureState(object):
         if not resource:
             return None
 
-        return FeatureState(
-            state=FeatureStateState.from_proto(resource.state),
-        )
+        return FeatureState(state=FeatureStateState.from_proto(resource.state),)
 
 
 class FeatureStateArray(object):

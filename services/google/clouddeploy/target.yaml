@@ -13,12 +13,9 @@
 # limitations under the License.
 info:
   title: Clouddeploy/Target
-  description: The Cloud Deploy `Target` resource
+  description: The Clouddeploy Target resource
   x-dcl-struct-name: Target
   x-dcl-has-iam: false
-  x-dcl-ref:
-    text: REST API
-    url: https://cloud.google.com/deploy/docs/api/reference/rest/v1/projects.locations.targets
 paths:
   get:
     description: The function used to get information about a Target
@@ -214,8 +211,7 @@ components:
         name:
           type: string
           x-dcl-go-name: Name
-          description: Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
-          x-kubernetes-immutable: true
+          description: Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
         project:
           type: string
           x-dcl-go-name: Project

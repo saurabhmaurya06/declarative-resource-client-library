@@ -282,10 +282,8 @@ class SubnetworkLogConfig(object):
         if SubnetworkLogConfigAggregationIntervalEnum.to_proto(
             resource.aggregation_interval
         ):
-            res.aggregation_interval = (
-                SubnetworkLogConfigAggregationIntervalEnum.to_proto(
-                    resource.aggregation_interval
-                )
+            res.aggregation_interval = SubnetworkLogConfigAggregationIntervalEnum.to_proto(
+                resource.aggregation_interval
             )
         if Primitive.to_proto(resource.flow_sampling):
             res.flow_sampling = Primitive.to_proto(resource.flow_sampling)

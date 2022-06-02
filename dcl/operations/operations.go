@@ -72,7 +72,7 @@ type StandardGCPOperationErrorError struct {
 
 // Wait waits for an StandardGCPOperation to complete by fetching the operation until it completes.
 func (op *StandardGCPOperation) Wait(ctx context.Context, c *dcl.Config, basePath, verb string) error {
-	c.Logger.Infof("Waiting on operation: %v", op)
+	c.Logger.Infof("Waiting on: %v", op)
 	op.config = c
 	op.basePath = basePath
 	op.verb = verb
@@ -81,13 +81,10 @@ func (op *StandardGCPOperation) Wait(ctx context.Context, c *dcl.Config, basePat
 		op.response = op.Response
 	}
 	if op.Done {
-		c.Logger.Infof("Completed operation: %v", op)
 		return nil
 	}
 
-	err := dcl.Do(ctx, op.operate, c.RetryProvider)
-	c.Logger.Infof("Completed operation: %v", op)
-	return err
+	return dcl.Do(ctx, op.operate, c.RetryProvider)
 }
 
 func (op *StandardGCPOperation) operate(ctx context.Context) (*dcl.RetryDetails, error) {

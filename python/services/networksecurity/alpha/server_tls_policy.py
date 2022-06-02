@@ -50,10 +50,8 @@ class ServerTlsPolicy(object):
         self.service_account_file = service_account_file
 
     def apply(self):
-        stub = (
-            server_tls_policy_pb2_grpc.NetworksecurityAlphaServerTlsPolicyServiceStub(
-                channel.Channel()
-            )
+        stub = server_tls_policy_pb2_grpc.NetworksecurityAlphaServerTlsPolicyServiceStub(
+            channel.Channel()
         )
         request = (
             server_tls_policy_pb2.ApplyNetworksecurityAlphaServerTlsPolicyRequest()
@@ -105,10 +103,8 @@ class ServerTlsPolicy(object):
         self.location = Primitive.from_proto(response.location)
 
     def delete(self):
-        stub = (
-            server_tls_policy_pb2_grpc.NetworksecurityAlphaServerTlsPolicyServiceStub(
-                channel.Channel()
-            )
+        stub = server_tls_policy_pb2_grpc.NetworksecurityAlphaServerTlsPolicyServiceStub(
+            channel.Channel()
         )
         request = (
             server_tls_policy_pb2.DeleteNetworksecurityAlphaServerTlsPolicyRequest()
@@ -148,10 +144,8 @@ class ServerTlsPolicy(object):
 
     @classmethod
     def list(self, project, location, service_account_file=""):
-        stub = (
-            server_tls_policy_pb2_grpc.NetworksecurityAlphaServerTlsPolicyServiceStub(
-                channel.Channel()
-            )
+        stub = server_tls_policy_pb2_grpc.NetworksecurityAlphaServerTlsPolicyServiceStub(
+            channel.Channel()
         )
         request = server_tls_policy_pb2.ListNetworksecurityAlphaServerTlsPolicyRequest()
         request.service_account_file = service_account_file

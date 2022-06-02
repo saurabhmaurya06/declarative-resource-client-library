@@ -118,10 +118,8 @@ class ForwardingRule(object):
             )
 
         if ForwardingRuleLoadBalancingSchemeEnum.to_proto(self.load_balancing_scheme):
-            request.resource.load_balancing_scheme = (
-                ForwardingRuleLoadBalancingSchemeEnum.to_proto(
-                    self.load_balancing_scheme
-                )
+            request.resource.load_balancing_scheme = ForwardingRuleLoadBalancingSchemeEnum.to_proto(
+                self.load_balancing_scheme
             )
 
         if ForwardingRuleMetadataFilterArray.to_proto(self.metadata_filter):
@@ -207,10 +205,8 @@ class ForwardingRule(object):
         self.target = Primitive.from_proto(response.target)
         self.project = Primitive.from_proto(response.project)
         self.location = Primitive.from_proto(response.location)
-        self.service_directory_registrations = (
-            ForwardingRuleServiceDirectoryRegistrationsArray.from_proto(
-                response.service_directory_registrations
-            )
+        self.service_directory_registrations = ForwardingRuleServiceDirectoryRegistrationsArray.from_proto(
+            response.service_directory_registrations
         )
 
     def delete(self):
@@ -255,10 +251,8 @@ class ForwardingRule(object):
             )
 
         if ForwardingRuleLoadBalancingSchemeEnum.to_proto(self.load_balancing_scheme):
-            request.resource.load_balancing_scheme = (
-                ForwardingRuleLoadBalancingSchemeEnum.to_proto(
-                    self.load_balancing_scheme
-                )
+            request.resource.load_balancing_scheme = ForwardingRuleLoadBalancingSchemeEnum.to_proto(
+                self.load_balancing_scheme
             )
 
         if ForwardingRuleMetadataFilterArray.to_proto(self.metadata_filter):
@@ -347,10 +341,8 @@ class ForwardingRule(object):
                 self.is_mirroring_collector
             )
         if ForwardingRuleLoadBalancingSchemeEnum.to_proto(self.load_balancing_scheme):
-            resource.load_balancing_scheme = (
-                ForwardingRuleLoadBalancingSchemeEnum.to_proto(
-                    self.load_balancing_scheme
-                )
+            resource.load_balancing_scheme = ForwardingRuleLoadBalancingSchemeEnum.to_proto(
+                self.load_balancing_scheme
             )
         if ForwardingRuleMetadataFilterArray.to_proto(self.metadata_filter):
             resource.metadata_filter.extend(
@@ -405,10 +397,8 @@ class ForwardingRuleMetadataFilter(object):
         if ForwardingRuleMetadataFilterFilterMatchCriteriaEnum.to_proto(
             resource.filter_match_criteria
         ):
-            res.filter_match_criteria = (
-                ForwardingRuleMetadataFilterFilterMatchCriteriaEnum.to_proto(
-                    resource.filter_match_criteria
-                )
+            res.filter_match_criteria = ForwardingRuleMetadataFilterFilterMatchCriteriaEnum.to_proto(
+                resource.filter_match_criteria
             )
         if ForwardingRuleMetadataFilterFilterLabelArray.to_proto(resource.filter_label):
             res.filter_label.extend(

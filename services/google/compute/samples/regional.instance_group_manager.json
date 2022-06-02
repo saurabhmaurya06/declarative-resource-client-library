@@ -46,16 +46,6 @@
         "sample-disk": {
           "autoDelete": "ON_PERMANENT_INSTANCE_DELETION"
         }
-      },
-      "internalIPs": {
-        "nic0": {
-          "autoDelete": "ON_PERMANENT_INSTANCE_DELETION"
-        }
-      },
-      "externalIPs": {
-        "nic0": {
-          "autoDelete": "ON_PERMANENT_INSTANCE_DELETION"
-        }
       }
     }
   }

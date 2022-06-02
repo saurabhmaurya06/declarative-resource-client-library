@@ -318,10 +318,8 @@ class MetricDescriptorLabelsValueTypeEnum(object):
     def to_proto(self, resource):
         if not resource:
             return resource
-        return (
-            metric_descriptor_pb2.MonitoringMetricDescriptorLabelsValueTypeEnum.Value(
-                "MonitoringMetricDescriptorLabelsValueTypeEnum%s" % resource
-            )
+        return metric_descriptor_pb2.MonitoringMetricDescriptorLabelsValueTypeEnum.Value(
+            "MonitoringMetricDescriptorLabelsValueTypeEnum%s" % resource
         )
 
     @classmethod

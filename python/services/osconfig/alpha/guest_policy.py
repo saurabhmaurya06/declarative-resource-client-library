@@ -451,10 +451,8 @@ class GuestPolicyPackageRepositoriesApt(object):
         if GuestPolicyPackageRepositoriesAptArchiveTypeEnum.to_proto(
             resource.archive_type
         ):
-            res.archive_type = (
-                GuestPolicyPackageRepositoriesAptArchiveTypeEnum.to_proto(
-                    resource.archive_type
-                )
+            res.archive_type = GuestPolicyPackageRepositoriesAptArchiveTypeEnum.to_proto(
+                resource.archive_type
             )
         if Primitive.to_proto(resource.uri):
             res.uri = Primitive.to_proto(resource.uri)
@@ -1332,10 +1330,8 @@ class GuestPolicyRecipesInstallStepsScriptRun(object):
         if GuestPolicyRecipesInstallStepsScriptRunInterpreterEnum.to_proto(
             resource.interpreter
         ):
-            res.interpreter = (
-                GuestPolicyRecipesInstallStepsScriptRunInterpreterEnum.to_proto(
-                    resource.interpreter
-                )
+            res.interpreter = GuestPolicyRecipesInstallStepsScriptRunInterpreterEnum.to_proto(
+                resource.interpreter
             )
         return res
 
@@ -1834,10 +1830,8 @@ class GuestPolicyRecipesUpdateStepsScriptRun(object):
         if GuestPolicyRecipesUpdateStepsScriptRunInterpreterEnum.to_proto(
             resource.interpreter
         ):
-            res.interpreter = (
-                GuestPolicyRecipesUpdateStepsScriptRunInterpreterEnum.to_proto(
-                    resource.interpreter
-                )
+            res.interpreter = GuestPolicyRecipesUpdateStepsScriptRunInterpreterEnum.to_proto(
+                resource.interpreter
             )
         return res
 

@@ -53,7 +53,7 @@ type KNativeOperationCondition struct {
 
 // Wait waits for an DNSOperation to complete by fetching the operation until it completes.
 func (op *KNativeOperation) Wait(ctx context.Context, c *dcl.Config, basePath, verb string) error {
-	c.Logger.Infof("Waiting on operation: %v", op)
+	c.Logger.Infof("Waiting on: %v", op)
 	op.config = c
 	op.basePath = basePath
 	op.verb = verb
@@ -64,9 +64,7 @@ func (op *KNativeOperation) Wait(ctx context.Context, c *dcl.Config, basePath, v
 	}
 	op.location = location
 
-	err := dcl.Do(ctx, op.operate, c.RetryProvider)
-	c.Logger.Infof("Completed operation: %v", op)
-	return err
+	return dcl.Do(ctx, op.operate, c.RetryProvider)
 }
 
 func (op *KNativeOperation) operate(ctx context.Context) (*dcl.RetryDetails, error) {

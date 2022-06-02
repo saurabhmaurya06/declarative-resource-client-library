@@ -105,8 +105,8 @@ components:
               x-dcl-go-name: AdminUsers
               description: Users to perform operations as a cluster admin. A managed
                 ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole
-                to the users. Up to ten admin users can be provided. For more info
-                on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
+                to the users. At most one user can be specified. For more info on
+                RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
               x-dcl-send-empty: true
               x-dcl-list-type: list
               items:
@@ -330,6 +330,7 @@ components:
               x-dcl-go-type: ClusterControlPlaneSshConfig
               description: Optional. SSH configuration for how to access the underlying
                 control plane machines.
+              x-kubernetes-immutable: true
               required:
               - ec2KeyPair
               properties:
@@ -338,6 +339,7 @@ components:
                   x-dcl-go-name: Ec2KeyPair
                   description: The name of the EC2 key pair used to login into cluster
                     machines.
+                  x-kubernetes-immutable: true
             subnetIds:
               type: array
               x-dcl-go-name: SubnetIds

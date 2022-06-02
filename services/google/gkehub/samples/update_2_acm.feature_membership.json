@@ -8,9 +8,7 @@
       "git": {
         "httpsProxy": "",
         "secretType": "ssh"
-      },
-      "preventDrift": false
-    },
-    "version": "1.11.2"
+      }
+    }
   }
 }
